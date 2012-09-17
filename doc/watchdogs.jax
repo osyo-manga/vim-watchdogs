@@ -3,7 +3,6 @@
 
 ==============================================================================
 目次						*watchdogs-contents*
-す
 概要				|watchdogs-introduction|
 使い方				|watchdogs-usage|
 対応しているシンタックスチェックツール				|watchdogs-tools|
@@ -33,11 +32,27 @@
 - vim-quickrun - github : https://github.com/thinca/vim-quickrun
   quickrun
 
-- vimproc      - github : https://github.com/Shougo/vimproc
+- vimproc - github : https://github.com/Shougo/vimproc
   quickrun で非同期を行うためのプラグイン
 
 - shabadou.vim - github : https://github.com/osyo-manga/shabadou.vim
   汎用的な quickrun-hook をまとめたプラグイン
+
+
+
+また、下記のプラグインも導入しておくと利便性が上がります。
+
+- vim-hier - github : https://github.com/jceb/vim-hier
+  quickfix の該当するコード箇所のハイライトを行う
+  本プラグインはデフォルトではハイライトの機能はないので、vim-hier などの外部
+  プラグインを使用する必要があります
+
+- quickfixstatus - https://github.com/dannyob/quickfixstatus
+  quickfix の該当箇所にカーソルを移動させるとエラー内容がコマンドウィンドウに
+  出力される
+
+本プラグインは quickfix へと出力を行なっているので、上記のような quickfix を参
+照するプラグインを使用することが出来ます。
 
 
 各シンタックスチェックを行うための設定方法や拡張方法などは |g:quickrun_config|
@@ -182,7 +197,7 @@ Example >
 
 
 ------------------------------------------------------------------------------
-filetype ごとにツールを設定				*watchdogs-config-filetype*
+filetype ごとにツールを設定			*watchdogs-config-filetype*
 
 記述されているツールの設定を filetype ごとで使用する為には
 g:quickrun_config.{filetype}/watchdogs_checker.type に記述します。
@@ -210,6 +225,24 @@ Example >
 
 b:watchdogs_checker_type は g:quickrun_config に書かれている設定より優先順位が
 高いです。
+
+
+------------------------------------------------------------------------------
+watchdogs/* 全てに共通する設定を定義		*watchdogs-config-default*
+
+g:quickrun_config.watchdogs/_ に watchdogs/* の元となる設定を記述することが出
+来ます。
+
+>
+	" :Watchdogs の出力先を buffer に指定する
+	let g:quickrun_config["watchdogs/_"] = {
+	\	"outputter" : "buffer",
+	\}
+<
+
+また、g:quickrun_config.watchdogs/_ に定義されている設定は |b:quickrun_config|
+よりも優先順位が高いので注意して下さい。
+quickrun_config の詳細は |b:quickrun_config| を参照して下さい。
 
 
 ==============================================================================
