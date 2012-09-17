@@ -1,0 +1,321 @@
+*watchdogs.txt*	quickrun.vim を使用してたンタックスチェックを行うプラグインで
+
+
+==============================================================================
+目次						*watchdogs-contents*
+す
+概要				|watchdogs-introduction|
+使い方				|watchdogs-usage|
+対応しているシンタックスチェックツール				|watchdogs-tools|
+コンフィグ			|watchdogs-config|
+  ツールの設定を追加		  |watchdogs-config-tools|
+  filetype ごとにツールを設定	  |watchdogs-config-filetype|
+自動シンタックスチェック	|watchdogs-auto|
+  ファイルの書き込み後		  |watchdogs-auto-BufWritePost|
+  一定時間キー入力がなかった場合にチェックを行う		  |watchdogs-auto-CursorHold|
+インターフェース		|watchdogs-interface|
+  コマンド			  |watchdogs-commands|
+設定				|watchdogs-setting|
+  変数				  |watchdogs-variables|
+
+
+==============================================================================
+概要						*watchdogs-introduction*
+
+|watchdogs| は thinca 氏が作成された |quickrun| をバックエンドとしたシンタック
+スチェックを行うためのプラグインです。
+|quickrun| をバックエンドに使用することで、非同期でシンタックスチェックを行う
+ことができ、さらに幅広い拡張を行うこともできます。
+本プラグインを使用するにあたって、予め |quickrun| を導入しておく必要がありま
+す。
+また、非同期処理を行うために Shougo 氏が作成された |vimproc| も導入して下さい。
+
+
+-vim-quickrun - github : https://github.com/thinca/vim-quickrun
+-vimproc      - github : https://github.com/Shougo/vimproc
+
+
+各ツールの設定方法や拡張方法などは |g:quickrun_config| と同じなので予め
+|g:quickrun_config| を読んでおくとスムーズに設定を行うことが出来ます。
+
+
+						*watchdogs-synopsis*
+>
+	" 現在の filetype に沿ったシンタックスチェックを行う
+	" 出力は quickfix に行われる
+	:WachdogsRun
+<
+
+
+また、コマンドから呼び出す以外にもファイルの保存時や一定時間キー入力を行われな
+かった場合等に自動的でシンタックスチェックを行うこともできます。
+
+
+==============================================================================
+使い方						*watchdogs-usage*
+
+|:WachdogsRun| コマンドで |g:quickrun_config| の設定を参照し、シンタックス
+チェックを行います。
+
+>
+	" WachdogsRun でシンタックスチェックを行います
+	:WachdogsRun
+	
+	" 使用するチェッカーを指定する
+	WachdogsRun watchdogs_checker/g++
+
+	" :QuickRun と同様の引数も渡すことが出来ます
+	WachdogsRun watchdogs_checker/g++ -cmdopt -std=gnu++0x
+<
+
+
+また、下記の設定することで任意のタイミングに自動的にチェックを行うこと
+も出来ます。
+
+>
+	" ファイルの書き込み後にシンタックスチェックを行う
+	" 使用する場合は任意の filetype のキーで 1 を設定する
+	let g:watchdogs_check_BufWritePost_enables = {
+	\	"haskell" : 1
+	\}
+<
+
+
+==============================================================================
+対応しているシンタックスチェックツール		*watchdogs-tools*
+
+|watchdogs.vim| で既に定義されているシンタックスチェックの為のツールは次の通り
+です。
+
+
+- "g++"
+  gcc の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
+
+- "clang++"
+  clang の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
+
+- "msvc"
+  cl.exe の /Zs オプションで C++ のシンタックスチェックを行います。
+
+- "ruby"
+  ruby の -c オプションで Ruby のシンタックスチェックを行います。
+
+- "jshint"
+  jshint を使用した JavaScript のシンタックスチェックを行います。
+
+- "ghc-mod"
+  ghc-mod を使用した Haskell のシンタックスチェックを行います。
+
+- "hlint"
+  hlint を使用した Haskell のシンタックスチェックを行います。
+
+
+各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
+各ツールの細かい設定は autoload/watchdogs.vim に定義されている
+|g:watchdogs#default_config| を参照して下さい。
+
+
+また、各 filetype に対応しているデフォルトの設定は次の通りになります。
+
+- "cpp"
+  デフォルト : "watchdogs_checker/g++"
+
+- "ruby"
+  デフォルト : "watchdogs_checker/ruby"
+
+- "javascript"
+  デフォルト : "watchdogs_checker/jshint"
+
+- "haskell"
+  デフォルト : "watchdogs_checker/ghc-mod"
+
+
+==============================================================================
+コンフィグ					*watchdogs-config*
+
+|watchdogs| は |g:quickrun_config| に設定を記述する事によって、filetype ごとに
+使用するツールを設定したり、新しいツールの設定を追加することが出来ます。
+
+
+------------------------------------------------------------------------------
+ツールの設定を追加				*watchdogs-config-tools*
+
+g:quickrun_config.watchdogs/{tool-name} に設定を記述します。
+
+Example >
+	" jshint の設定を記述する
+	" 指定するオプションなどは quickrun と同じ
+	let g:quickrun_config["watchdogs_checker/jshint"] = {
+	\	"command" : "jshint",
+	\	"exec"    : "%c %s:p",
+	\	"quickfix/errorformat" : "%f: line %l\\,\ col %c\\, %m",
+	\}
+<
+
+また、同名の config に設定を追加する事も出来ます。
+
+Example >
+	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
+	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/jshint"
+	\}
+<
+
+
+------------------------------------------------------------------------------
+filetype ごとにツールを設定				*watchdogs-config-filetype*
+
+記述されているツールの設定を filetype ごとで使用する為には
+g:quickrun_config.{filetype}/watchdogs_checker.type に記述します。
+
+Example >
+	" filetype=javascript で使用するツールを jshint にする
+	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/jshint"
+	\}
+
+	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
+	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/jshint",
+	\	"cmdopt" : "-std=gnu++0x -Wall",
+	\}
+<
+
+
+また、b:watchdogs_checker_type に設定することで、それを使用する事も出来ます。
+
+Example >
+	" そのバッファで使用される設定を記述
+	let b:watchdogs_checker_type = "javascript/watchdogs_checker"
+<
+
+b:watchdogs_checker_type は g:quickrun_config に書かれている設定より優先順位が
+高いです。
+
+
+==============================================================================
+自動シンタックスチェック			*watchdogs-auto*
+
+
+------------------------------------------------------------------------------
+ファイルの書き込み後				*watchdogs-auto-BufWritePost*
+
+ファイルの書き込み後に自動的に |:WatchdogsRunSilent| を実行します。
+デフォルトでは無効になっているので使用するためには、
+|g:watchdogs_check_BufWritePost_enable|
+もしくは、
+|g:watchdogs_check_BufWritePost_enables|
+を設定して有効にする必要があります。
+
+
+Exmaple >
+	" 有効にする filetype を 1 に設定する
+	" haskell と cpp のみを有効
+	let g:watchdogs_check_BufWritePost_enables = {
+	\	"cpp"     : 1,
+	\	"haskell" : 1
+	\}
+
+	" 全ての filetype を有効にする
+	" 使用できない設定の場合、エラーが出る場合があるので注意
+	let g:watchdogs_check_BufWritePost_enable = 1
+
+	" 0 を設定することで一部の filetype のみ無効にする事ができる
+	" これは watchdogs_check_BufWritePost_enable よりも優先順位が高い
+	let g:watchdogs_check_BufWritePost_enables = {
+	\	"javascript" : 1
+	\}
+<
+
+
+------------------------------------------------------------------------------
+一定時間キー入力がなかった場合にチェックを行う	*watchdogs-auto-CursorHold*
+
+一定時間キー入力が行われなかった場合に |:WatchdogsRunSilent| を実行します。
+時間は |updatetime| に依存します。
+また、この設定ではファイル書き込み後に1度しか行われません。
+（ファイルに書き込んでいなければ、2回以上チェックが行われない。
+
+Exmaple >
+	" 有効にする filetype を 1 に設定する
+	" haskell と cpp のみを有効
+	let g:watchdogs_check_CursorHold_enables = {
+	\	"cpp"     : 1,
+	\	"haskell" : 1
+	\}
+
+	" 全ての filetype を有効にする
+	" 使用できない設定の場合、エラーが出る場合があるので注意
+	let g:watchdogs_check_CursorHold_enable = 1
+
+	" 0 を設定することで一部の filetype のみ無効にする事ができる
+	" これは watchdogs_check_CursorHold_enable よりも優先順位が高い
+	let g:watchdogs_check_CursorHold_enables = {
+	\	"javascript" : 1
+	\}
+<
+
+
+==============================================================================
+インターフェース				*watchdogs-interface*
+
+------------------------------------------------------------------------------
+コマンド					*watchdogs-commands*
+
+:WachdogsRun					*:WachdogsRun*
+	現在のバッファのシンタックスチェックを行います。
+	使用されるシンタックスチェックは |g:quickrun_config| を参照して決定さ
+	れます。
+
+:WachdogsRunSilent				*:WachdogsRunSilent*
+	|:WatchdogsRun| とは違い、不正な設定だった場合にエラー出力が行われませ
+	ん。
+
+
+==============================================================================
+設定						*watchdogs-setting*
+
+------------------------------------------------------------------------------
+変数						*watchdogs-variables*
+
+g:watchdogs_check_BufWritePost_enable		 *g:watchdogs_check_BufWritePost_enable*
+	ファイル書き込み時の自動チェックの制御を行います。
+	詳しくは |watchdogs-auto-BufWritePost| を参照して下さい。
+>
+	" Default
+	let g:watchdogs_check_BufWritePost_enable = 0
+<
+
+g:watchdogs_check_BufWritePost_enables		 *g:watchdogs_check_BufWritePost_enables*
+	ファイル書き込み時の自動チェックの制御を行います。
+	詳しくは |watchdogs-auto-BufWritePost| を参照して下さい。
+	|g:watchdogs_check_BufWritePost_enable| とは違い、filetype ごとの設定を
+	行います。
+	|g:watchdogs_check_BufWritePost_enable| よりも優先順位は高いです。
+>
+	" Default
+	let g:watchdogs_check_BufWritePost_enables = {}
+<
+
+g:watchdogs_check_CursorHold_enable		 *g:watchdogs_check_CursorHold_enable*
+	一定時間キー入力がなかった場合の自動チェックの制御を行います。
+	詳しくは |watchdogs-auto-CursorHold| を参照して下さい。
+>
+	" Default
+	let g:watchdogs_check_CursorHold_enable = 0
+<
+
+g:watchdogs_check_CursorHold_enables		 *g:watchdogs_check_CursorHold_enables*
+	一定時間キー入力がなかった場合の自動チェックの制御を行います。
+	詳しくは |watchdogs-auto-CursorHold| を参照して下さい。
+	|g:watchdogs_check_CursorHold_enable| とは違い、filetype ごとの設定を
+	行います。
+	|g:watchdogs_check_CursorHold_enable| よりも優先順位は高いです。
+>
+	" Default
+	let g:watchdogs_check_CursorHold_enables = {}
+<
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
