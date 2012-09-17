@@ -26,13 +26,18 @@
 スチェックを行うためのプラグインです。
 |quickrun| をバックエンドに使用することで、非同期でシンタックスチェックを行う
 ことができ、さらに幅広い拡張を行うこともできます。
-本プラグインを使用するにあたって、予め |quickrun| を導入しておく必要がありま
+本プラグインを使用するにあたって予め下記のプラグインを導入しておく必要があ
+ります。
 す。
-また、非同期処理を行うために Shougo 氏が作成された |vimproc| も導入して下さい。
 
+- vim-quickrun - github : https://github.com/thinca/vim-quickrun
+  quickrun
 
--vim-quickrun - github : https://github.com/thinca/vim-quickrun
--vimproc      - github : https://github.com/Shougo/vimproc
+- vimproc      - github : https://github.com/Shougo/vimproc
+  quickrun で非同期を行うためのプラグイン
+
+- shabadou.vim - github : https://github.com/osyo-manga/shabadou.vim
+  汎用的な quickrun-hook をまとめたプラグイン
 
 
 各ツールの設定方法や拡張方法などは |g:quickrun_config| と同じなので予め
