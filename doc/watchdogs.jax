@@ -40,8 +40,9 @@
   汎用的な quickrun-hook をまとめたプラグイン
 
 
-各ツールの設定方法や拡張方法などは |g:quickrun_config| と同じなので予め
-|g:quickrun_config| を読んでおくとスムーズに設定を行うことが出来ます。
+各シンタックスチェックを行うための設定方法や拡張方法などは |g:quickrun_config|
+と同じなので予め |g:quickrun_config| を読んでおくとスムーズに設定を行うことが
+出来ると思います。
 
 
 						*watchdogs-synopsis*
@@ -58,6 +59,19 @@
 
 ==============================================================================
 使い方						*watchdogs-usage*
+
+使用するためには vimrc に下記のスクリプトを追加する必要あります。
+
+>
+	" ユーザの g:quickrun_config の設定
+	let g:quickrun_config = { ... }
+
+	" g:quickrun_config の設定後に
+	" call watchdogs#setup(g:quickrun_config)
+	" を呼び出す
+	call watchdogs#setup(g:quickrun_config)
+<
+
 
 |:WachdogsRun| コマンドで |g:quickrun_config| の設定を参照し、シンタックス
 チェックを行います。
