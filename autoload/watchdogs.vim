@@ -20,6 +20,10 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/ghc-mod"
 \	},
 \
+\	"python/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/pyflakes",
+\	},
+\
 \	"watchdogs_checker/_" : {
 \		"runner" : "vimproc",
 \		"outputter" : "quickfix",
@@ -60,6 +64,11 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/hlint" : {
 \		"command" : "hlint",
+\		"exec"    : '%c %o %s:p',
+\	},
+\	
+\	"watchdogs_checker/pyflakes" : {
+\		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
 \	},
 \
