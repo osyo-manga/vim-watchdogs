@@ -48,7 +48,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/ruby" : {
 \		"command" : "ruby",
-\		"exec"    : "%c %s:p %o -c",
+\		"exec"    : "%c %o -c %s:p",
 \	},
 \
 \	"watchdogs_checker/jshint" : {
