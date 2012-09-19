@@ -29,10 +29,10 @@ endfunction
 
 
 command! -nargs=* -range=0 -complete=customlist,quickrun#complete
-\	WachdogsRun call s:run(s:watchdogs_type(&filetype), <q-args>, 1)
+\	WatchdogsRun call s:run(s:watchdogs_type(&filetype), <q-args>, 1)
 
 command! -nargs=* -range=0 -complete=customlist,quickrun#complete
-\	WachdogsRunSilent call s:run(s:watchdogs_type(&filetype), <q-args>)
+\	WatchdogsRunSilent call s:run(s:watchdogs_type(&filetype), <q-args>)
 
 
 
@@ -47,7 +47,7 @@ function! s:watchdogs_check_bufwrite(filetype)
 	if (g:watchdogs_check_BufWritePost_enable
 \	|| get(g:watchdogs_check_BufWritePost_enables, a:filetype, 0))
 \	&& get(g:watchdogs_check_BufWritePost_enables, a:filetype, 1)
-		WachdogsRunSilent
+		WatchdogsRunSilent
 	endif
 endfunction
 
@@ -66,7 +66,7 @@ function! s:watchdogs_check_cursorhold(filetype)
 	if (g:watchdogs_check_CursorHold_enable
 \	|| get(g:watchdogs_check_CursorHold_enables, a:filetype, 0))
 \	&& get(g:watchdogs_check_CursorHold_enables, a:filetype, 1)
-		WachdogsRunSilent
+		WatchdogsRunSilent
 		let b:watchdogs_checked_cursorhold=1
 	endif
 endfunction
