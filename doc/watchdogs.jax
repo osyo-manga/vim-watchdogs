@@ -521,6 +521,51 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetiem*
 <
 
 
+------------------------------------------------------------------------------
+新しいツールを定義する				*watchdogs-examples-add_tool*
+
+シンタックスチェックを行う設定を追加します。
+使用できるようになるまで、2段階あり、
+まずは、watchdogs_checker/{tool-name} にツールの設定を記述し、その設定を使用する
+{filetype}/watchdogs_checker を設定します。
+設定するオプションの細かい設定は |quickrun-options| を参照して下さい。
+
+
+>
+	let g:quickrun_config = {}
+
+	" 新しいツールの設定を追加
+	" g:quickrun_config.watchdogs_checker/{tool-name} に設定する
+	"
+	" command はツールのコマンド
+	" exec の各オプションは
+	" %c   : command 
+	" %o   : cmdopt
+	" %s:p : ソースファイルの絶対パス
+	" に展開される
+	let g:quickrun_config["watchdogs_checker/g++"]
+	\	"command"   : "g++",
+	\	"exec"      : "%c %o -fsyntax-only %s:p ",
+	\},
+	
+	
+	" 定義したツールを使用する filetype を指定する
+	" {filetype}/watchdogs_checker を定義
+	" type に定義した watchdogs_checker の名前を設定する
+	" 固有のコマンドオプションを使用したいのであれば
+	" cmdopt
+	" に設定する
+	let g:quickrun_config["cpp/watchdogs_checker"]
+	\"cpp/watchdogs_checker" : {
+	\	"type" : "watchdogs_checker/g++",
+	\	"cmdopt" : "-std=gnu++0x -Wall",
+	\},
+	
+	
+	" watchdogs.vim の設定を追加
+	call watchdogs#setup(g:quickrun_config)
+<
+
 
 ==============================================================================
 vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
