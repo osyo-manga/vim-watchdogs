@@ -21,7 +21,9 @@
 設定例				|watchdogs-examples|
   C++				  |watchdogs-examples-cpp|
   quickfix のエラーフォマットを指定する				  |watchdogs-examples-erroformat|
-  quickfix のエラーフォマットを指定する				  |watchdogs-examples-command|
+  command を変更する		  |watchdogs-examples-command|
+  quickfix ウィンドウを自動的に閉じる				  |watchdogs-examples-close_quickfix|
+  vimproc の更新間隔を短くする	  |watchdogs-examples-updatetiem|
 
 
 ==============================================================================
@@ -152,6 +154,15 @@
 - "pyflakes"
   pyflakes を使用した Python のシンタックスチェックを行います。
 
+- "perl"
+  perl の -c オプションで perl のシンタックスチェックを行います。
+
+- "php"
+  php の -l オプションで php のシンタックスチェックを行います。
+
+- "luac"
+  luac を使用した lua のシンタックスチェックを行います。
+
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
@@ -174,6 +185,15 @@
 
 - "python"
   デフォルト : "watchdogs_checker/pyflakes"
+
+- "perl"
+  デフォルト : "watchdogs_checker/perl"
+
+- "php"
+  デフォルト : "watchdogs_checker/php"
+
+- "lua"
+  デフォルト : "watchdogs_checker/luac"
 
 
 ==============================================================================
@@ -442,13 +462,14 @@ command を変更する				*watchdogs-examples-command*
 
 
 ------------------------------------------------------------------------------
-quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-command*
+quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-close_quickfix*
 
 >
 	" hook-close_quickfix を有効にする
+	" quickrun.vim の終了時に quickfix を閉じる
 	let g:quickrun_config = {
 	\	"watchdogs_checker/_" : {
-	\		"command" : "C:/Python27/Scripts/pyflakes",
+	\		"hook/close_quickfix/enable_exit" : 1,
 	\	},
 	\}
 	
@@ -456,6 +477,48 @@ quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-command*
 	call watchdogs#setup(g:quickrun_config)
 <
 
+
+------------------------------------------------------------------------------
+vimproc の更新間隔を短くする			*watchdogs-examples-updatetiem*
+
+'updatetime' の値が大きい場合、出力されるまでにタイムラグがある可能性がありま
+す。
+その場合は、vimproc/updatetime の値を小さくして、更新の間隔を短くする事で解決
+します。
+
+>
+	" runner/vimproc/updatetime に設定する
+	let g:quickrun_config = {
+	\	"watchdogs_checker/_" : {
+	\		"runner/vimproc/updatetime" : 40,
+	\	},
+	\}
+	
+	" watchdogs.vim の設定を追加
+	call watchdogs#setup(g:quickrun_config)
+<
+
+
+------------------------------------------------------------------------------
+一部の filetype のみ無効にする			*watchdogs-examples-disable*
+
+|g:watchdogs_check_BufWritePost_enable| や
+|g:watchdogs_check_CursorHold_enable| などの一部の filetype のみ無効にします。
+
+'updatetime' の値が大きい場合、出力されるまでにタイムラグがある可能性がありま
+す。
+その場合は、vimproc/updatetime の値を小さくして、更新の間隔を短くする事で解決
+します。
+
+>
+	" ファイル保存時のシンタックスチェックを有効にする
+	let g:watchdogs_check_BufWritePost_enable = 1
+	
+	" haskell のみ無効にする
+	let g:watchdogs_check_BufWritePost_enables = {
+	\	"haskell" : 0
+	\}
+<
 
 
 

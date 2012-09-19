@@ -24,6 +24,18 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/pyflakes",
 \	},
 \
+\	"perl/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/perl",
+\	},
+\
+\	"php/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/php",
+\	},
+\
+\	"lua/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/luac",
+\	},
+\
 \	"watchdogs_checker/_" : {
 \		"runner" : "vimproc",
 \		"outputter" : "quickfix",
@@ -70,6 +82,24 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
+\	},
+\
+\	"watchdogs_checker/perl" : {
+\		"command" : "perl",
+\		"exec"    : "%c %o -c %s:p",
+\		"quickfix/errorformat" : '%m\ at\ %f\ line\ %l%.%#',
+\	},
+\
+\	"watchdogs_checker/php" : {
+\		"command" : "php",
+\		"exec"    : "%c %o -l %s:p",
+\		"quickfix/errorformat" : '%m\ in\ %f\ on\ line\ %l',
+\	},
+\
+\	"watchdogs_checker/luac" : {
+\		"command" : "luac",
+\		"exec"    : "%c %o %s:p",
+\		"quickfix/errorformat" : '%.%#: %#%f:%l: %m',
 \	},
 \
 \}
