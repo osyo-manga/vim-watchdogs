@@ -24,6 +24,8 @@
   command を変更する		  |watchdogs-examples-command|
   quickfix ウィンドウを自動的に閉じる				  |watchdogs-examples-close_quickfix|
   vimproc の更新間隔を短くする	  |watchdogs-examples-updatetiem|
+  一部の filetype のみ無効にする				  |watchdogs-examples-disable|
+  新しいツールを定義する	  |watchdogs-examples-add_tool|
 
 
 ==============================================================================
@@ -163,6 +165,15 @@
 - "luac"
   luac を使用した lua のシンタックスチェックを行います。
 
+- "dmd"
+  dmd の -c オプションで D言語のシンタックスチェックを行います。
+
+- "gcc"
+  gcc の -fsyntax-only オプションで C言語のシンタックスチェックを行います。
+
+- "clang"
+  clang の -fsyntax-only オプションで C言語のシンタックスチェックを行います。
+
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
@@ -194,6 +205,12 @@
 
 - "lua"
   デフォルト : "watchdogs_checker/luac"
+
+- "d"
+  デフォルト : "watchdogs_checker/dmd"
+
+- "c"
+  デフォルト : "watchdogs_checker/c"
 
 
 ==============================================================================
@@ -279,6 +296,10 @@ quickrun_config の詳細は |b:quickrun_config| を参照して下さい。
 
 ==============================================================================
 自動シンタックスチェック			*watchdogs-auto*
+
+任意のタイミングで自動的にシンタックスチェックを行う為の設定です。
+また、この設定では |:QuickRun| が起動中にはシンタックスチェックは行われませ
+ん。
 
 
 ------------------------------------------------------------------------------
