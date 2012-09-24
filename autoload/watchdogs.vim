@@ -98,8 +98,14 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/perl",
 \	},
 \
+\\	"watchdogs_checker/perl" : {
+\		"command" : "perl",
+\		"exec"    : "%c %o -c %s:p",
+\		"quickfix/errorformat" : '%m\ at\ %f\ line\ %l%.%#',
+\	},
 \
-\	"watchdogs_checker/perl" : {
+\
+\	"watchdogs_checker/vimparse.pl" : {
 \		"command" : "perl",
 \		"exec"    : "%c " . expand('<sfile>:p:h:h') . "/bin/vimparse.pl" . " -c %o %s:p",
 \		"quickfix/errorformat" : '%f:%l:%m',
