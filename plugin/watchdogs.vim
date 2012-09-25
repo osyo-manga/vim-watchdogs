@@ -47,8 +47,14 @@ let g:watchdogs_check_BufWritePost_enables =
 
 
 function! s:watchdogs_check_bufwrite(filetype)
-	if g:watchdogs_quickrun_running_check
-		return
+	if exists("*quickrun#is_running")
+		if quickrun#is_running()
+			return
+		endif
+	else
+		if g:watchdogs_quickrun_running_check
+			return
+		endif
 	endif
 	if (g:watchdogs_check_BufWritePost_enable
 \	|| get(g:watchdogs_check_BufWritePost_enables, a:filetype, 0))
@@ -66,8 +72,14 @@ let g:watchdogs_check_CursorHold_enables =
 
 
 function! s:watchdogs_check_cursorhold(filetype)
-	if g:watchdogs_quickrun_running_check
-		return
+	if exists("*quickrun#is_running")
+		if quickrun#is_running()
+			return
+		endif
+	else
+		if g:watchdogs_quickrun_running_check
+			return
+		endif
 	endif
 	if get(b:, "watchdogs_checked_cursorhold", 1)
 		return
