@@ -98,11 +98,17 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/perl",
 \	},
 \
-\
-\	"watchdogs_checker/perl" : {
+\\	"watchdogs_checker/perl" : {
 \		"command" : "perl",
 \		"exec"    : "%c %o -c %s:p",
 \		"quickfix/errorformat" : '%m\ at\ %f\ line\ %l%.%#',
+\	},
+\
+\
+\	"watchdogs_checker/vimparse.pl" : {
+\		"command" : "perl",
+\		"exec"    : "%c " . expand('<sfile>:p:h:h') . "/bin/vimparse.pl" . " -c %o %s:p",
+\		"quickfix/errorformat" : '%f:%l:%m',
 \	},
 \
 \
@@ -135,6 +141,32 @@ let g:watchdogs#default_config = {
 \		"command" : "ruby",
 \		"exec"    : "%c %o -c %s:p",
 \	},
+\
+\
+\	"scala/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/scalac"
+\	},
+\
+\ "watchdogs_checker/scalac" : {
+\		"command" : "scalac",
+\		"exec"    : "%c %o %s:p",
+\		"quickfix/errorformat"    : '%f:%l:\ error:\ %m,%-Z%p^,%-C%.%#,%-G%.%#',
+\	 },
+\
+\
+\ "watchdogs_checker/sh" : {
+\		"command" : "sh",
+\		"exec"    : "%c -n %o %s:p",
+\		"quickfix/errorformat"    : '%f:\ line\ %l:%m',
+\	 },
+\
+\
+\ "watchdogs_checker/zsh" : {
+\		"command" : "zsh",
+\		"exec"    : "%c -n %o %s:p",
+\		"quickfix/errorformat"    : '%f:%l:%m',
+\	 },
+\
 \
 \}
 

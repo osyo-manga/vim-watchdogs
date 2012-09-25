@@ -8,7 +8,27 @@ set cpo&vim
 
 
 function! s:watchdogs_type(filetype)
-	return get(b:, "watchdogs_checker_type", a:filetype."/watchdogs_checker")
+	if exists('b:watchdogs_checker_type')
+		return b:watchdogs_checker_type
+	endif
+	let key = a:filetype."/watchdogs_checker"
+	if has_key(g:quickrun_config, key)
+		return a:filetype."/watchdogs_checker"
+	endif
+	let len = strlen(a:filetype)
+	while len >= 0
+		let pos = strridx(a:filetype, ".", len)
+		if pos == -1
+			break
+		else
+			let key = strpart(a:filetype, 0, pos) . "/watchdogs_checker"
+			if has_key(g:quickrun_config, key)
+				return key
+			endif
+		endif
+		let len = pos - 1
+	endwhile
+	return a:filetype."/watchdogs_checker"
 endfunction
 
 
