@@ -20,6 +20,11 @@ function! s:run(type, args, ...)
 		endif
 		return
 	endif
+	let line =
+\		"-type ".a:type." ".
+\		a:args
+
+" 	call quickrun#run(extend(copy(g:quickrun_config["watchdogs_checker/_"]), quickrun#config(line), "force"))
 	execute
 \		"QuickRun "
 \		"-type ".a:type." ".

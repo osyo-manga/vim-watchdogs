@@ -106,7 +106,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/vimparse.pl" : {
 \		"command" : "perl",
-\		"exec"    : "%c " . expand('<sfile>:p:h:h') . "/bin/vimparse.pl" . " -c %o %s:p",
+\		"exec"    : "%c " . substitute(expand('<sfile>:p:h:h'), '\\', '\/', "g") . "/bin/vimparse.pl" . " -c %o %s:p",
 \		"quickfix/errorformat" : '%f:%l:%m',
 \	},
 \
@@ -153,12 +153,20 @@ let g:watchdogs#default_config = {
 \	 },
 \
 \
+\	"sh/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/sh"
+\	},
+\
 \ "watchdogs_checker/sh" : {
 \		"command" : "sh",
 \		"exec"    : "%c -n %o %s:p",
 \		"quickfix/errorformat"    : '%f:\ line\ %l:%m',
 \	 },
 \
+\
+\	"zsh/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/sh"
+\	},
 \
 \ "watchdogs_checker/zsh" : {
 \		"command" : "zsh",
