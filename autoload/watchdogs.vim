@@ -142,11 +142,35 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
+\	"sass/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/sass",
+\	},
+\	"watchdogs_checker/sass" : {
+\		"command" : "sass",
+\		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
+\		"quickfix/errorformat"
+\			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
+\			. ',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
+\	},
+\
+\
+\	"scss/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/scss",
+\	},
+\	"watchdogs_checker/scss" : {
+\		"command" : "sass",
+\		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
+\		"quickfix/errorformat"
+\			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
+\			.',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
+\	},
+\
+\
 \	"scala/watchdogs_checker" : {
 \		"type" : "watchdogs_checker/scalac"
 \	},
 \
-\ "watchdogs_checker/scalac" : {
+\	"watchdogs_checker/scalac" : {
 \		"command" : "scalac",
 \		"exec"    : "%c %o %s:p",
 \		"quickfix/errorformat"    : '%f:%l:\ error:\ %m,%-Z%p^,%-C%.%#,%-G%.%#',
@@ -157,7 +181,7 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/sh"
 \	},
 \
-\ "watchdogs_checker/sh" : {
+\	"watchdogs_checker/sh" : {
 \		"command" : "sh",
 \		"exec"    : "%c -n %o %s:p",
 \		"quickfix/errorformat"    : '%f:\ line\ %l:%m',
@@ -168,7 +192,7 @@ let g:watchdogs#default_config = {
 \		"type" : "watchdogs_checker/sh"
 \	},
 \
-\ "watchdogs_checker/zsh" : {
+\	"watchdogs_checker/zsh" : {
 \		"command" : "zsh",
 \		"exec"    : "%c -n %o %s:p",
 \		"quickfix/errorformat"    : '%f:%l:%m',
