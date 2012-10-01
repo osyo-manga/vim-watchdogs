@@ -24,7 +24,7 @@ function! s:run(type, args, ...)
 \		"-type ".a:type." ".
 \		a:args
 
-	call quickrun#run(extend(copy(g:quickrun_config["watchdogs_checker/_"]), quickrun#config(line), "force"))
+	call quickrun#run(extend(quickrun#config(line), g:quickrun_config["watchdogs_checker/_"]), "keep")
 endfunction
 
 
