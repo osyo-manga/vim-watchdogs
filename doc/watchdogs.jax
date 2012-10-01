@@ -24,7 +24,7 @@
   quickfix のエラーフォマットを指定する				  |watchdogs-examples-erroformat|
   command を変更する		  |watchdogs-examples-command|
   quickfix ウィンドウを自動的に閉じる				  |watchdogs-examples-close_quickfix|
-  vimproc の更新間隔を短くする	  |watchdogs-examples-updatetiem|
+  vimproc の更新間隔を短くする	  |watchdogs-examples-updatetime|
   一部の filetype のみ無効にする				  |watchdogs-examples-disable|
   新しいツールを定義する	  |watchdogs-examples-add_tool|
 
@@ -534,7 +534,7 @@ quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-close_quic
 
 
 ------------------------------------------------------------------------------
-vimproc の更新間隔を短くする			*watchdogs-examples-updatetiem*
+vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 
 'updatetime' の値が大きい場合、出力されるまでにタイムラグがある可能性がありま
 す。
