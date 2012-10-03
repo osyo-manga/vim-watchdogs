@@ -362,7 +362,7 @@ Example >
 	" 0 を設定することで一部の filetype のみ無効にする事ができる
 	" これは watchdogs_check_BufWritePost_enable よりも優先順位が高い
 	let g:watchdogs_check_BufWritePost_enables = {
-	\	"javascript" : 1
+	\	"javascript" : 0
 	\}
 <
 
