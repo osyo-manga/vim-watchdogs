@@ -347,7 +347,7 @@ quickrun_config の詳細は |b:quickrun_config| を参照して下さい。
 を設定して有効にする必要があります。
 
 
-Exmaple >
+Example >
 	" 有効にする filetype を 1 に設定する
 	" haskell と cpp のみを有効
 	let g:watchdogs_check_BufWritePost_enables = {
@@ -375,7 +375,7 @@ Exmaple >
 また、この設定ではファイル書き込み後に1度しか行われません。
 （ファイルに書き込んでいなければ、2回以上チェックが行われない。
 
-Exmaple >
+Example >
 	" 有効にする filetype を 1 に設定する
 	" haskell と cpp のみを有効
 	let g:watchdogs_check_CursorHold_enables = {
