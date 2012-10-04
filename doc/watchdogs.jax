@@ -273,8 +273,9 @@ Example >
 
 Example >
 	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
-	let g:quickrun_config["javascript/watchdogs_checker"] = {
-	\	"type" : "watchdogs_checker/jshint"
+	let g:quickrun_config["cpp/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/cpp",
+	\	"cmdopt" : "-std=gnu++0x -Wall",
 	\}
 <
 
@@ -317,7 +318,7 @@ g:quickrun_config.watchdogs_checker/_ に watchdogs_checker/* の元となる設
 述することが出来ます。
 
 >
-	" :Watchdogs の出力先を buffer に指定する
+	" :WatchdogsRun の出力先を buffer に指定する
 	let g:quickrun_config["watchdogs_checker/_"] = {
 	\	"outputter" : "buffer",
 	\}
@@ -360,7 +361,7 @@ Example >
 	let g:watchdogs_check_BufWritePost_enable = 1
 
 	" 0 を設定することで一部の filetype のみ無効にする事ができる
-	" これは watchdogs_check_BufWritePost_enable よりも優先順位が高い
+	" これは g:watchdogs_check_BufWritePost_enable よりも優先順位が高い
 	let g:watchdogs_check_BufWritePost_enables = {
 	\	"javascript" : 0
 	\}
@@ -388,7 +389,7 @@ Example >
 	let g:watchdogs_check_CursorHold_enable = 1
 
 	" 0 を設定することで一部の filetype のみ無効にする事ができる
-	" これは watchdogs_check_CursorHold_enable よりも優先順位が高い
+	" これは g:watchdogs_check_CursorHold_enable よりも優先順位が高い
 	let g:watchdogs_check_CursorHold_enables = {
 	\	"javascript" : 1
 	\}
@@ -594,14 +595,14 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 	"
 	" command はツールのコマンド
 	" exec の各オプションは
-	" %c   : command 
+	" %c   : command
 	" %o   : cmdopt
 	" %s:p : ソースファイルの絶対パス
 	" に展開される
-	let g:quickrun_config["watchdogs_checker/g++"]
+	let g:quickrun_config["watchdogs_checker/g++"] = {
 	\	"command"   : "g++",
 	\	"exec"      : "%c %o -fsyntax-only %s:p ",
-	\},
+	\}
 	
 	
 	" 定義したツールを使用する filetype を指定する
@@ -610,11 +611,10 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 	" 固有のコマンドオプションを使用したいのであれば
 	" cmdopt
 	" に設定する
-	let g:quickrun_config["cpp/watchdogs_checker"]
-	\"cpp/watchdogs_checker" : {
+	let g:quickrun_config["cpp/watchdogs_checker"] = {
 	\	"type" : "watchdogs_checker/g++",
 	\	"cmdopt" : "-std=gnu++0x -Wall",
-	\},
+	\}
 	
 	
 	" watchdogs.vim の設定を追加
