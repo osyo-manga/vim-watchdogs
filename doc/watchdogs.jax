@@ -110,7 +110,7 @@
 	WatchdogsRun watchdogs_checker/g++
 
 	" :QuickRun と同様の引数も渡すことが出来ます
-	WatchdogsRun watchdogs_checker/g++ -cmdopt -std=gnu++0x
+	WatchdogsRun watchdogs_checker/g++ -cmdopt -Wall
 <
 
 
@@ -136,8 +136,16 @@
 - "g++"
   gcc の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
 
+- "g++03"
+  gcc の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
+  "g++" と違い -std=gnu++0x  オプションはついていません。
+
 - "clang++"
   clang の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
+
+- "clang++03"
+  clang の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
+  "clang++" と違い -std=gnu++0x  オプションはついていません。
 
 - "msvc"
   cl.exe の /Zs オプションで C++ のシンタックスチェックを行います。
@@ -275,7 +283,7 @@ Example >
 	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
 	let g:quickrun_config["cpp/watchdogs_checker"] = {
 	\	"type" : "watchdogs_checker/cpp",
-	\	"cmdopt" : "-std=gnu++0x -Wall",
+	\	"cmdopt" : "-Wall",
 	\}
 <
 
@@ -294,8 +302,8 @@ Example >
 
 	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
 	let g:quickrun_config["javascript/watchdogs_checker"] = {
-	\	"type" : "watchdogs_checker/jshint",
-	\	"cmdopt" : "-std=gnu++0x -Wall",
+	\	"type" : "watchdogs_checker/g++",
+	\	"cmdopt" : "-Wall",
 	\}
 <
 
@@ -471,11 +479,11 @@ C++						*watchdogs-examples-cpp*
 	" gcc と clang にオプションを追加する
 	let g:quickrun_config = {
 	\	"watchdogs_checker/g++" : {
-	\		"cmdopt" : "-std=gnu++0x -Wall",
+	\		"cmdopt" : "-Wall",
 	\	},
 	\
 	\	"watchdogs_checker/clang++" : {
-	\		"cmdopt" : "-std=gnu++0x -Wall",
+	\		"cmdopt" : "-Wall",
 	\	},
 	\
 	\}
@@ -601,7 +609,7 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 	" に展開される
 	let g:quickrun_config["watchdogs_checker/g++"] = {
 	\	"command"   : "g++",
-	\	"exec"      : "%c %o -fsyntax-only %s:p ",
+	\	"exec"      : "%c %o -std=gnu++0x -fsyntax-only %s:p ",
 	\}
 	
 	
@@ -613,7 +621,7 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 	" に設定する
 	let g:quickrun_config["cpp/watchdogs_checker"] = {
 	\	"type" : "watchdogs_checker/g++",
-	\	"cmdopt" : "-std=gnu++0x -Wall",
+	\	"cmdopt" : "-Wall",
 	\}
 	
 	

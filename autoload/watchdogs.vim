@@ -33,17 +33,27 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/g++" : {
 \		"command"   : "g++",
+\		"exec"      : "%c %o -std=gnu++0x -fsyntax-only %s:p ",
+\	},
+\
+\	"watchdogs_checker/g++03" : {
+\		"command"   : "g++",
+\		"exec"      : "%c %o -fsyntax-only %s:p ",
+\	},
+\
+\	"watchdogs_checker/clang++" : {
+\		"command"   : "clang++",
+\		"exec"      : "%c %o -std=gnu++0x -fsyntax-only %s:p ",
+\	},
+\
+\	"watchdogs_checker/clang++03" : {
+\		"command"   : "clang++",
 \		"exec"      : "%c %o -fsyntax-only %s:p ",
 \	},
 \
 \	"watchdogs_checker/msvc" : {
 \		"command"   : "cl",
 \		"exec"      : "%c /Zs %o %s:p ",
-\	},
-\
-\	"watchdogs_checker/clang++" : {
-\		"command"   : "clang++",
-\		"exec"      : "%c %o -fsyntax-only %s:p ",
 \	},
 \
 \
