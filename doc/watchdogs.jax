@@ -257,7 +257,7 @@
 ------------------------------------------------------------------------------
 ツールの設定を追加				*watchdogs-config-tools*
 
-g:quickrun_config.watchdogs/{tool-name} に設定を記述します。
+g:quickrun_config.watchdogs_checker/{tool-name} に設定を記述します。
 
 Example >
 	" jshint の設定を記述する
@@ -313,12 +313,12 @@ b:watchdogs_checker_type は g:quickrun_config に書かれている設定より
 ------------------------------------------------------------------------------
 watchdogs/* 全てに共通する設定を定義		*watchdogs-config-default*
 
-g:quickrun_config.watchdogs/_ に watchdogs/* の元となる設定を記述することが出
-来ます。
+g:quickrun_config.watchdogs_checker/_ に watchdogs_checker/* の元となる設定を記
+述することが出来ます。
 
 >
 	" :Watchdogs の出力先を buffer に指定する
-	let g:quickrun_config["watchdogs/_"] = {
+	let g:quickrun_config["watchdogs_checker/_"] = {
 	\	"outputter" : "buffer",
 	\}
 <
