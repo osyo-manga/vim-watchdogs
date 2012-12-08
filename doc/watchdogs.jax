@@ -419,6 +419,13 @@ Example >
 	|:WatchdogsRun| とは違い、不正な設定だった場合にエラー出力が行われませ
 	ん。
 
+:WatchdogsRunSweep				*:WatchdogsRunSilent*
+	|watchdogs.vim| を強制終了させます。
+	内部では |quickrun#sweep_sessions()| を呼び出しているだけなので詳しい
+	挙動に関してはそちらを参照して下さい。
+
+
+
 
 ==============================================================================
 設定						*watchdogs-setting*

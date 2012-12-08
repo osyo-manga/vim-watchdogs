@@ -34,6 +34,9 @@ command! -nargs=* -range=0 -complete=customlist,quickrun#complete
 command! -nargs=* -range=0 -complete=customlist,quickrun#complete
 \	WatchdogsRunSilent call s:run(s:watchdogs_type(&filetype), <q-args>)
 
+command! -nargs=0
+\	WatchdogsRunSweep call quickrun#sweep_sessions()
+
 
 let g:watchdogs_quickrun_running_check =
 \	get(g:, "g:watchdogs_quickrun_running_check", 0)
