@@ -57,6 +57,23 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
+\	"coffee/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/coffee",
+\	},
+\
+\	"watchdogs_checker/coffee" : {
+\		"command" : "coffee",
+\		"exec"    : "%c -c -l -o /tmp %o %s:p",
+\		"quickfix/errorformat" : 'Syntax%trror: In %f\, %m on line %l,%EError: In %f\, Parse error on line %l: %m,%EError: In %f\, %m on line %l,%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G%.%#',
+\	},
+\
+\	"watchdogs_checker/coffeelint" : {
+\		"command" : "coffeelint",
+\		"exec"    : "%c --csv %o %s:p",
+\		"quickfix/errorformat" : '%f\,%l\,%trror\,%m',
+\	},
+\
+\
 \	"d/watchdogs_checker" : {
 \		"type" : "watchdogs_checker/dmd",
 \	},
