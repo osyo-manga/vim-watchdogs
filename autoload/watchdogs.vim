@@ -157,6 +157,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
+\		"quickfix/errorformat" : '%f:%l:%m',
 \	},
 \
 \	"ruby/watchdogs_checker" : {
