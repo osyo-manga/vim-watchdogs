@@ -9,6 +9,7 @@ let g:watchdogs#default_config = {
 \		"outputter" : "quickfix",
 \		"hook/hier_update/enable_exit" : 1,
 \		"hook/quickfix_stateus_enable/enable_exit" : 1,
+\		"hook/shebang/enable" : 0,
 \	},
 \
 \
@@ -157,7 +158,6 @@ let g:watchdogs#default_config = {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
 \	},
-\
 \
 \	"ruby/watchdogs_checker" : {
 \		"type" : "watchdogs_checker/ruby"
