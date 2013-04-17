@@ -52,6 +52,12 @@ let g:watchdogs#default_config = {
 \		"exec"      : "%c %o -fsyntax-only %s:p ",
 \	},
 \
+\	"watchdogs_checker/clang_check" : {
+\		"command" : "clang-check",
+\		"exec"    : "%c %s:p -- %o",
+\		"cmdopt" : "--std=c++11",
+\	},
+\
 \	"watchdogs_checker/msvc" : {
 \		"command"   : "cl",
 \		"exec"      : "%c /Zs %o %s:p ",

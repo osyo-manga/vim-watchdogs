@@ -147,6 +147,10 @@
   clang の -fsyntax-only オプションで C++ のシンタックスチェックを行います。
   "clang++" と違い -std=gnu++0x  オプションはついていません。
 
+- "clang-check"
+   clang の clang-check ツールを使用したシンタックスチェック
+   参照:http://clang.llvm.org/docs/ClangCheck.html
+
 - "msvc"
   cl.exe の /Zs オプションで C++ のシンタックスチェックを行います。
 
