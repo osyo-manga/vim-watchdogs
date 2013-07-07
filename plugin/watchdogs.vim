@@ -31,7 +31,6 @@ function! s:run(type, args, ...)
 	if !has_key(line_config, "type")
 		let line_config.type = get(get(g:quickrun_config, a:type, {}), "type", "")
 	endif
-	PP! line_config
 
 	call quickrun#run(line_config)
 endfunction
