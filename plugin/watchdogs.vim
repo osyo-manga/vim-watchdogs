@@ -27,7 +27,7 @@ function! s:run(type, args, ...)
 		return
 	endif
 
-	let line_config = quickrun#config(a:args)
+	let line_config = extend(get(g:quickrun_config, "watchdogs_checker/_", {}), quickrun#config(a:args))
 	if !has_key(line_config, "type")
 		let line_config.type = get(get(g:quickrun_config, a:type, {}), "type", "")
 	endif
