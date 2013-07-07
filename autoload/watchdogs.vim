@@ -10,6 +10,8 @@ let g:watchdogs#default_config = {
 \		"hook/hier_update/enable_exit" : 1,
 \		"hook/quickfix_stateus_enable/enable_exit" : 1,
 \		"hook/shebang/enable" : 0,
+\		"hook/quickfix_replate_tempname_to_bufnr/enable_exit" : 1,
+\		"hook/quickfix_replate_tempname_to_bufnr/priority_exit" : -10,
 \	},
 \
 \
@@ -233,6 +235,7 @@ let g:watchdogs#default_config = {
 \	 },
 \
 \
+\	"watchdogs_checker_dummy" : {}
 \}
 
 
