@@ -19,6 +19,7 @@ function! s:run(type, args, ...)
 	if !has_key(g:quickrun_config, "watchdogs_checker_dummy")
 		call watchdogs#setup(g:quickrun_config)
 	endif
+
 	let is_output_msg = a:0 ? a:1 : 0
 	if !has_key(g:quickrun_config, a:type)
 		if is_output_msg
@@ -30,6 +31,13 @@ function! s:run(type, args, ...)
 	let line_config = extend(get(g:quickrun_config, "watchdogs_checker/_", {}), quickrun#config(a:args))
 	if !has_key(line_config, "type")
 		let line_config.type = get(get(g:quickrun_config, a:type, {}), "type", "")
+	endif
+
+	if empty(line_config.type)
+		if is_output_msg
+			echoerr "==watchdogs error== Not found -type ".a:type
+		endif
+		return
 	endif
 
 	call quickrun#run(line_config)

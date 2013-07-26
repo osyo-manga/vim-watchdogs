@@ -16,7 +16,10 @@ let g:watchdogs#default_config = {
 \
 \
 \	"c/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/gcc"
+\		"type"
+\			: executable("gcc")   ? "watchdogs_checker/gcc"
+\			: executable("clang") ? "watchdogs_checker/clang"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/gcc" : {
@@ -31,7 +34,12 @@ let g:watchdogs#default_config = {
 \
 \
 \	"cpp/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/g++"
+\		"type"
+\			: executable("clang-check") ? "watchdogs_checker/clang-check"
+\			: executable("clang++")     ? "watchdogs_checker/clang++"
+\			: executable("g++")         ? "watchdogs_checker/g++"
+\			: executable("cl")          ? "watchdogs_checker/cl"
+\			: "",
 \	},
 \
 \	"watchdogs_checker/g++" : {
@@ -67,7 +75,10 @@ let g:watchdogs#default_config = {
 \
 \
 \	"coffee/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/coffee",
+\		"type"
+\			: executable("coffeelint") ? "watchdogs_checker/coffeelint"
+\			: executable("coffee")     ? "watchdogs_checker/coffee"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/coffee" : {
@@ -84,7 +95,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"d/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/dmd",
+\		"type"
+\			: executable("dmd") ? "watchdogs_checker/dmd"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/dmd" : {
@@ -94,7 +107,10 @@ let g:watchdogs#default_config = {
 \
 \
 \	"haskell/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/ghc-mod"
+\		"type"
+\			: executable("hlint")   ? "watchdogs_checker/hlint"
+\			: executable("ghc-mod") ? "watchdogs_checker/ghc-mod"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/ghc-mod" : {
@@ -109,7 +125,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"javascript/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/jshint"
+\		"type"
+\			: executable("jshint") ? "watchdogs_checker/jshint"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/jshint" : {
@@ -120,7 +138,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"lua/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/luac",
+\		"type"
+\			: executable("luac") ? "watchdogs_checker/luac"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/luac" : {
@@ -131,7 +151,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"perl/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/perl",
+\		"type"
+\			: executable("perl") ? "watchdogs_checker/perl"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/perl" : {
@@ -148,7 +170,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"php/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/php",
+\		"type"
+\			: executable("php") ? "watchdogs_checker/php"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/php" : {
@@ -159,7 +183,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"python/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/pyflakes",
+\		"type"
+\			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
+\			: ""
 \	},
 \	
 \	"watchdogs_checker/pyflakes" : {
@@ -169,7 +195,9 @@ let g:watchdogs#default_config = {
 \	},
 \
 \	"ruby/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/ruby"
+\		"type"
+\			: executable("ruby") ? "watchdogs_checker/ruby"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/ruby" : {
@@ -179,8 +207,11 @@ let g:watchdogs#default_config = {
 \
 \
 \	"sass/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/sass",
+\		"type"
+\			: executable("sass") ? "watchdogs_checker/sass"
+\			: ""
 \	},
+\
 \	"watchdogs_checker/sass" : {
 \		"command" : "sass",
 \		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
@@ -191,8 +222,11 @@ let g:watchdogs#default_config = {
 \
 \
 \	"scss/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/scss",
+\		"type"
+\			: executable("sass") ? "watchdogs_checker/scss"
+\			: ""
 \	},
+\
 \	"watchdogs_checker/scss" : {
 \		"command" : "sass",
 \		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
@@ -203,7 +237,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"scala/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/scalac"
+\		"type"
+\			: executable("scalac") ? "watchdogs_checker/scalac"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/scalac" : {
@@ -214,7 +250,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"sh/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/sh"
+\		"type"
+\			: executable("sh") ? "watchdogs_checker/sh"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/sh" : {
@@ -225,7 +263,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"zsh/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/sh"
+\		"type"
+\			: executable("zsh") ? "watchdogs_checker/zsh"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/zsh" : {
@@ -235,15 +275,16 @@ let g:watchdogs#default_config = {
 \	 },
 \
 \
+\	"vim/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/vimlint"
+\	},
+\
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
 \		'exec' : '%c -N -c "call vimlint#vimlint(\"%s\", {})" -c "qall!"',
 \		'outputter/quickfix/errorformat': '%f:%l:%c:%n: %m',
 \	 },
 \
-\	"vim/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/vimlint"
-\	},
 \
 \
 \	"watchdogs_checker_dummy" : {}
