@@ -281,7 +281,8 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
-\		'exec' : '%c -N -c "call vimlint#vimlint(\"%s\", {})" -c "qall!"',
+\		"exec" : "",
+\		"hook/vim_vimlint/enable" : 1,
 \		'outputter/quickfix/errorformat': '%f:%l:%c:%n: %m',
 \	 },
 \
