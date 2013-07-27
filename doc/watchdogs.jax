@@ -86,19 +86,6 @@
 ==============================================================================
 使い方						*watchdogs-usage*
 
-使用するためには vimrc に下記のスクリプトを追加する必要あります。
-
->
-	" ユーザの g:quickrun_config の設定
-	let g:quickrun_config = { ... }
-
-	" g:quickrun_config の設定後に
-	" call watchdogs#setup(g:quickrun_config)
-	" を呼び出す
-	call watchdogs#setup(g:quickrun_config)
-<
-
-
 |:WatchdogsRun| コマンドで |g:quickrun_config| の設定を参照し、シンタックス
 チェックを行います。
 
