@@ -35,8 +35,8 @@ function! s:run(type, args, ...)
 		let line_config.type = a:type
 	endif
 
-	if a:type =~# '^.\+/watchdogs_checker$'
-\	&& empty(line_config.type)
+	if line_config.type =~# '^.\+/watchdogs_checker$'
+\	&& empty(get(get(g:quickrun_config, a:type, {}), "type", ""))
 		if is_output_msg
 			echoerr "==watchdogs error== Empty type ".a:type
 		endif
