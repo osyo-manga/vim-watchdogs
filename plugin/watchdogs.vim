@@ -28,14 +28,17 @@ function! s:run(type, args, ...)
 		return
 	endif
 
-	let line_config = extend(get(g:quickrun_config, "watchdogs_checker/_", {}), quickrun#config(a:args))
+
+	let line_config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
+
 	if !has_key(line_config, "type")
-		let line_config.type = get(get(g:quickrun_config, a:type, {}), "type", "")
+		let line_config.type = a:type
 	endif
 
-	if empty(line_config.type)
+	if a:type =~# '^.\+/watchdogs_checker$'
+\	&& empty(line_config.type)
 		if is_output_msg
-			echoerr "==watchdogs error== Not found -type ".a:type
+			echoerr "==watchdogs error== Empty type ".a:type
 		endif
 		return
 	endif
