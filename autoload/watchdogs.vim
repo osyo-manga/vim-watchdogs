@@ -145,7 +145,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/luac" : {
 \		"command" : "luac",
-\		"exec"    : "%c %o %s:p",
+\		"exec"    : "%c %o -p %s:p",
 \		"quickfix/errorformat" : '%.%#: %#%f:%l: %m',
 \	},
 \
