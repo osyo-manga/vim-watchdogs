@@ -99,6 +99,15 @@ let g:watchdogs#default_config = {
 \		"exec"      : "%c /Zs %o %s:p ",
 \	},
 \
+\   "watchdogs_checker/tsc" : {
+\	    "command" : "tsc",
+\	    "exec"    : "%c %s:p",
+\	    "quickfix/errorformat" : '%+A\ %#%f\ %#(%l\\\,%c):\ %m,%C%m',
+\   },
+\
+\   "typescript/watchdogs_checker" : {
+\	    "type" : "watchdogs_checker/tsc"
+\   },
 \
 \	"coffee/watchdogs_checker" : {
 \		"type"
