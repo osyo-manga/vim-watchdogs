@@ -2,6 +2,32 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
+function! s:get_vimlint()
+	return substitute(globpath(&rtp, "vimlint/vimlint.py"), '\\', '/', "g")
+endfunction
+
+
+function! s:executable_vimlint()
+	return executable("python") && !empty(s:get_vimlint())
+endfunction
+
+
+function! s:get_vimlint_syngan_plugin_dir()
+	return substitute(fnamemodify(globpath(&rtp, "autoload/vimlint.vim"), ":h:h"), '\\', '/', "g")
+endfunction
+
+
+function! s:get_vimlparser_plugin_dir()
+	return substitute(fnamemodify(globpath(&rtp, "autoload/vimlparser.vim"), ":h:h"), '\\', '/', "g")
+endfunction
+
+
+function! s:executable_vim_vimlint()
+	return filereadable(globpath(&rtp, "autoload/vimlparser.vim")) && filereadable(globpath(&rtp, "autoload/vimlint.vim"))
+endfunction
+
+
+
 let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/_" : {
@@ -276,16 +302,24 @@ let g:watchdogs#default_config = {
 \
 \
 \	"vim/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/vimlint"
+\		"type"
+\			: s:executable_vim_vimlint() ? "watchdogs_checker/vimlint"
+\			: s:executable_vimlint() ? "watchdogs_checker/vimlint_by_dbakker"
+\			: ""
 \	},
 \
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
-\		"exec" : "",
-\		"hook/vim_vimlint/enable" : 1,
+\		"exec" : '%C -N -u NONE -i NONE -V1 -e -s -c "set rtp+=' . s:get_vimlparser_plugin_dir() . ',' . s:get_vimlint_syngan_plugin_dir() . '" -c "call vimlint#vimlint(''%s'', {})" -c "qall!"',
 \		'outputter/quickfix/errorformat': '%f:%l:%c:%n: %m',
 \	 },
 \
+\	"watchdogs_checker/vimlint_by_dbakker" : {
+\		'command': 'python',
+\		'exec': '%C ' . s:get_vimlint() . ' %s',
+\		"runner" : "vimproc",
+\		'outputter/quickfix/errorformat': '%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m',
+\	},
 \
 \
 \	"watchdogs_checker_dummy" : {}
