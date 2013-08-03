@@ -24,9 +24,11 @@
   quickfix のエラーフォマットを指定する				  |watchdogs-examples-erroformat|
   command を変更する		  |watchdogs-examples-command|
   quickfix ウィンドウを自動的に閉じる				  |watchdogs-examples-close_quickfix|
+  quickfix ウィンドウを開かない   |watchdogs-examples-unopen_quickfix|
   vimproc の更新間隔を短くする	  |watchdogs-examples-updatetime|
   一部の filetype のみ無効にする				  |watchdogs-examples-disable|
   新しいツールを定義する	  |watchdogs-examples-add_tool|
+  filetype に対して指定したツールを設定する			  |watchdogs-examples-change_tool|
 
 
 ==============================================================================
@@ -192,8 +194,8 @@
 - "scss"
   sass で --check オプションで scss のシンタックスチェックを行います。
 
-- "cofee"
-  coffee の -c -l オプションで cofeee のシンタックスチェックを行います。
+- "coffee"
+  coffee の -c -l オプションで coffee のシンタックスチェックを行います。
 
 - "coffeelint"
   coffeelint で coffee のシンタックスチェックを行います。
@@ -493,7 +495,7 @@ g:watchdogs_check_CursorHold_enables		 *g:watchdogs_check_CursorHold_enables*
 ------------------------------------------------------------------------------
 C++						*watchdogs-examples-cpp*
 
->
+Example: >
 	" gcc と clang にオプションを追加する
 	let g:quickrun_config = {
 	\	"watchdogs_checker/g++" : {
@@ -514,7 +516,7 @@ C++						*watchdogs-examples-cpp*
 quickfix のエラーフォマットを指定する		*watchdogs-examples-erroformat*
 任意の watchdogs_checker/* に quickfix/errorformat を設定します。
 
->
+Example: >
 	" jshint のエラーフォマットを設定する
 	let g:quickrun_config = {
 	\	"watchdogs_checker/jshint" : {
@@ -530,7 +532,7 @@ quickfix のエラーフォマットを指定する		*watchdogs-examples-errofor
 ------------------------------------------------------------------------------
 command を変更する				*watchdogs-examples-command*
 
->
+Example: >
 	" pyflakes のパスを変更する
 	let g:quickrun_config = {
 	\	"watchdogs_checker/pyflakes" : {
@@ -546,12 +548,31 @@ command を変更する				*watchdogs-examples-command*
 ------------------------------------------------------------------------------
 quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-close_quickfix*
 
->
+Example: >
 	" hook-close_quickfix を有効にする
 	" quickrun.vim の終了時に quickfix を閉じる
 	let g:quickrun_config = {
 	\	"watchdogs_checker/_" : {
 	\		"hook/close_quickfix/enable_exit" : 1,
+	\	},
+	\}
+	
+	" watchdogs.vim の設定を追加
+	call watchdogs#setup(g:quickrun_config)
+<
+<
+
+
+------------------------------------------------------------------------------
+quickfix ウィンドウを開かない		*watchdogs-examples-unopen_quickfix*
+
+|quickfix| ウィンドウが開いてほしくない場合、
+|watchdogs-examples-close_quickfix| よりもこちらの設定の方が有効です。
+
+Example: >
+	let g:quickrun_config = {
+	\	"watchdogs_checker/_" : {
+	\		'outputter/quickfix/open_cmd' : '',
 	\	},
 	\}
 	
@@ -568,7 +589,7 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 その場合は、vimproc/updatetime の値を小さくして、更新の間隔を短くする事で解決
 します。
 
->
+Example: >
 	" runner/vimproc/updatetime に設定する
 	let g:quickrun_config = {
 	\	"watchdogs_checker/_" : {
@@ -592,7 +613,7 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 その場合は、vimproc/updatetime の値を小さくして、更新の間隔を短くする事で解決
 します。
 
->
+Example: >
 	" ファイル保存時のシンタックスチェックを有効にする
 	let g:watchdogs_check_BufWritePost_enable = 1
 	
@@ -613,7 +634,7 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 設定するオプションの細かい設定は |quickrun-options| を参照して下さい。
 
 
->
+Example: >
 	let g:quickrun_config = {}
 
 	" 新しいツールの設定を追加
@@ -645,7 +666,25 @@ vimproc の更新間隔を短くする			*watchdogs-examples-updatetime*
 	
 	" watchdogs.vim の設定を追加
 	call watchdogs#setup(g:quickrun_config)
+
 <
+------------------------------------------------------------------------------
+filetype に対して指定したツールを設定する	*watchdogs-examples-change_tool*
+
+Example: >
+	" C++ のシンタックスチェックを g++ にする
+	" type に対して使用したい watchdogs_checker/{tool} を設定する
+	let g:quickrun_config = {
+	\	"cpp/watchdogs_checker" : {
+	\		"type" : "watchdogs_checker/g++",
+	\	},
+	\
+	\}
+	
+	" watchdogs.vim の設定を追加
+	call watchdogs#setup(g:quickrun_config)
+<
+
 
 
 ==============================================================================
