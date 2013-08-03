@@ -21,13 +21,6 @@ function! s:run(type, args, ...)
 	endif
 
 	let is_output_msg = a:0 ? a:1 : 0
-	if !has_key(g:quickrun_config, a:type)
-		if is_output_msg
-			echoerr "==watchdogs error== Not found -type ".a:type
-		endif
-		return
-	endif
-
 
 	let line_config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
 
