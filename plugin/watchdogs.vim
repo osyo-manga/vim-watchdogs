@@ -8,11 +8,22 @@ set cpo&vim
 
 
 function! s:watchdogs_type(filetype)
+	if empty(a:filetype)
+		return ""
+	endif
 	return get(b:, "watchdogs_checker_type", a:filetype."/watchdogs_checker")
 endfunction
 
 
 function! s:run(type, args, ...)
+	let is_output_msg = a:0 ? a:1 : 0
+
+	if empty(a:type)
+		if is_output_msg
+			echoerr "==watchdogs error== Not support"
+		endif
+		return
+	endif
 	if !exists("g:quickrun_config")
 		let g:quickrun_config = {}
 	endif
@@ -20,7 +31,6 @@ function! s:run(type, args, ...)
 		call watchdogs#setup(g:quickrun_config)
 	endif
 
-	let is_output_msg = a:0 ? a:1 : 0
 
 	let line_config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
 
@@ -31,7 +41,7 @@ function! s:run(type, args, ...)
 	if line_config.type =~# '^.\+/watchdogs_checker$'
 \	&& empty(get(get(g:quickrun_config, a:type, {}), "type", ""))
 		if is_output_msg
-			echoerr "==watchdogs error== Empty type ".a:type
+			echoerr "==watchdogs error== Not support filetype " . a:type
 		endif
 		return
 	endif
