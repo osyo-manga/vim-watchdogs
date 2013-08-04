@@ -194,8 +194,11 @@
 - "scss"
   sass で --check オプションで scss のシンタックスチェックを行います。
 
-- "coffee"
-  coffee の -c -l オプションで coffee のシンタックスチェックを行います。
+- "typescript"
+  tsc で typescript のシンタックスチェックを行います。
+
+- "cofee"
+  coffee の -c -l オプションで cofeee のシンタックスチェックを行います。
 
 - "coffeelint"
   coffeelint で coffee のシンタックスチェックを行います。
@@ -260,6 +263,9 @@
 
 - "scss"
   デフォルト : "watchdogs_checker/scss"
+
+- "typescript"
+  デフォルト : "watchdogs_checker/tsc"
 
 - "coffee"
   デフォルト : "watchdogs_checker/coffee"
