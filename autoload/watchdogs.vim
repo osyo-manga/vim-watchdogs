@@ -109,7 +109,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/tsc" : {
 \		"command" : "tsc",
 \		"exec"	: "%c %s:p",
-\		"quickfix/errorformat" : '%+A\ %#%f\ %#(%l\\\,%c):\ %m,%C%m',
+\		"quickfix/errorformat" : '%+A\ %#%f\ %#(%l\\,%c):\ %m,%C%m',
 \	},
 \
 \
