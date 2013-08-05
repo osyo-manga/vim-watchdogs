@@ -147,8 +147,8 @@ let g:watchdogs#default_config = {
 \
 \	"haskell/watchdogs_checker" : {
 \		"type"
-\			: executable("hlint")   ? "watchdogs_checker/hlint"
 \			: executable("ghc-mod") ? "watchdogs_checker/ghc-mod"
+\			: executable("hlint")   ? "watchdogs_checker/hlint"
 \			: ""
 \	},
 \
