@@ -54,6 +54,8 @@ Async syntax check plugin.
  * scss
 * sh
  * sh
+* TypeScript
+ * tsc
 * Vim script
  * vimlint
  * vimlint_by_dbakker
