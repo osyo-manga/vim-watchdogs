@@ -15,46 +15,48 @@ function! s:watchdogs_type(filetype)
 endfunction
 
 
-function! s:run(type, args, ...)
-	let is_output_msg = a:0 ? a:1 : 0
+function! s:is_empty_type(type)
+	return a:type =~# '^.\+/watchdogs_checker$'
+\	&& empty(get(get(g:quickrun_config, a:type, {}), "type", ""))
+endfunction
 
-	if empty(a:type)
-		if is_output_msg
-			echoerr "==watchdogs error== Not support"
-		endif
-		return
-	endif
+
+function! s:setup_quickrun_config()
 	if !exists("g:quickrun_config")
 		let g:quickrun_config = {}
 	endif
 	if !has_key(g:quickrun_config, "watchdogs_checker_dummy")
 		call watchdogs#setup(g:quickrun_config)
 	endif
+endfunction
 
 
-	let line_config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
-
-	if !has_key(line_config, "type")
-		let line_config.type = a:type
+function! s:run(args, deftype, ...)
+	let is_output_msg = a:0 ? a:1 : 0
+	call s:setup_quickrun_config()
+	
+	let config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
+	if !has_key(config, "type")
+		let config.type = a:deftype
 	endif
 
-	if line_config.type =~# '^.\+/watchdogs_checker$'
-\	&& empty(get(get(g:quickrun_config, a:type, {}), "type", ""))
+	if empty(config.type)
+\	|| s:is_empty_type(get(config, "type", ""))
 		if is_output_msg
-			echoerr "==watchdogs error== Not support filetype " . a:type
+			echoerr "==watchdogs error== Not support filetype " . config.type
 		endif
 		return
 	endif
-
-	call quickrun#run(line_config)
+	
+	call quickrun#run(config)
 endfunction
 
 
 command! -nargs=* -range=0 -complete=customlist,quickrun#complete
-\	WatchdogsRun call s:run(s:watchdogs_type(&filetype), <q-args>, 1)
+\	WatchdogsRun call s:run(<q-args>,s:watchdogs_type(&filetype),  1)
 
 command! -nargs=* -range=0 -complete=customlist,quickrun#complete
-\	WatchdogsRunSilent call s:run(s:watchdogs_type(&filetype), <q-args>)
+\	WatchdogsRunSilent call s:run(<q-args>,s:watchdogs_type(&filetype), 0)
 
 command! -nargs=0
 \	WatchdogsRunSweep call quickrun#sweep_sessions()
