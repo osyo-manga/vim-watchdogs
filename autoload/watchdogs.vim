@@ -61,7 +61,7 @@ let g:watchdogs#default_config = {
 \
 \	"cpp/watchdogs_checker" : {
 \		"type"
-\			: executable("clang-check") ? "watchdogs_checker/clang-check"
+\			: executable("clang-check") ? "watchdogs_checker/clang_check"
 \			: executable("clang++")     ? "watchdogs_checker/clang++"
 \			: executable("g++")         ? "watchdogs_checker/g++"
 \			: executable("cl")          ? "watchdogs_checker/cl"
