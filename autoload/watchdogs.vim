@@ -34,7 +34,7 @@ let g:watchdogs#default_config = {
 \		"runner" : "vimproc",
 \		"outputter" : "quickfix",
 \		"hook/hier_update/enable_exit" : 1,
-\		"hook/quickfix_stateus_enable/enable_exit" : 1,
+\		"hook/quickfix_status_enable/enable_exit" : 1,
 \		"hook/shebang/enable" : 0,
 \		"hook/quickfix_replate_tempname_to_bufnr/enable_exit" : 1,
 \		"hook/quickfix_replate_tempname_to_bufnr/priority_exit" : -10,
