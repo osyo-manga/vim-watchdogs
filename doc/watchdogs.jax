@@ -146,6 +146,10 @@
 - "ruby"
   ruby の -c オプションで Ruby のシンタックスチェックを行います。
 
+- "rubocop"
+  rubocop を使用して Ruby のシンタックスチェックを行います。
+  bbatsov/rubocop - https://github.com/bbatsov/rubocop
+
 - "jshint"
   jshint を使用した JavaScript のシンタックスチェックを行います。
 

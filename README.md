@@ -46,6 +46,7 @@ Async syntax check plugin.
  * pyflakes
 * Ruby
  * ruby
+ * rubocop
 * sass
  * sass
 * Scala

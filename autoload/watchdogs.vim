@@ -244,6 +244,11 @@ let g:watchdogs#default_config = {
 \		"exec"    : "%c %o -c %s:p",
 \	},
 \
+\	"watchdogs_checker/rubocop" : {
+\		"command" : "rubocop",
+\		"exec"    : "%c %o %s:p",
+\	},
+\
 \
 \	"sass/watchdogs_checker" : {
 \		"type"
