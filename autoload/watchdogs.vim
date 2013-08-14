@@ -247,6 +247,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rubocop" : {
 \		"command" : "rubocop",
 \		"exec"    : "%c %o %s:p",
+\		"quickfix/errorformat" : '%f:%l:%c:%m',
 \	},
 \
 \
