@@ -109,7 +109,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/tsc" : {
 \		"command" : "tsc",
 \		"exec"	: "%c %s:p",
-\		"quickfix/errorformat" : '%+A\ %#%f\ %#(%l\\,%c):\ %m,%C%m',
+\		"outputter/quickfix/errorformat" : '%+A\ %#%f\ %#(%l\\,%c):\ %m,%C%m',
 \	},
 \
 \
@@ -123,13 +123,13 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/coffee" : {
 \		"command" : "coffee",
 \		"exec"    : "%c -c -l -o /tmp %o %s:p",
-\		"quickfix/errorformat" : 'Syntax%trror: In %f\, %m on line %l,%EError: In %f\, Parse error on line %l: %m,%EError: In %f\, %m on line %l,%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G%.%#',
+\		"outputter/quickfix/errorformat" : 'Syntax%trror: In %f\, %m on line %l,%EError: In %f\, Parse error on line %l: %m,%EError: In %f\, %m on line %l,%W%f(%l): lint warning: %m,%-Z%p^,%W%f(%l): warning: %m,%-Z%p^,%E%f(%l): SyntaxError: %m,%-Z%p^,%-G%.%#',
 \	},
 \
 \	"watchdogs_checker/coffeelint" : {
 \		"command" : "coffeelint",
 \		"exec"    : "%c --csv %o %s:p",
-\		"quickfix/errorformat" : '%f\,%l\,%trror\,%m',
+\		"outputter/quickfix/errorformat" : '%f\,%l\,%trror\,%m',
 \	},
 \
 \
@@ -172,7 +172,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %s:p",
-\		"quickfix/errorformat" : "%f: line %l\\,\ col %c\\, %m",
+\		"outputter/quickfix/errorformat" : "%f: line %l\\,\ col %c\\, %m",
 \	},
 \
 \
@@ -185,7 +185,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/luac" : {
 \		"command" : "luac",
 \		"exec"    : "%c %o -p %s:p",
-\		"quickfix/errorformat" : '%.%#: %#%f:%l: %m',
+\		"outputter/quickfix/errorformat" : '%.%#: %#%f:%l: %m',
 \	},
 \
 \
@@ -198,13 +198,13 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/perl" : {
 \		"command" : "perl",
 \		"exec"    : "%c %o -c %s:p",
-\		"quickfix/errorformat" : '%m\ at\ %f\ line\ %l%.%#',
+\		"outputter/quickfix/errorformat" : '%m\ at\ %f\ line\ %l%.%#',
 \	},
 \
 \	"watchdogs_checker/vimparse.pl" : {
 \		"command" : "perl",
 \		"exec"    : "%c " . substitute(expand('<sfile>:p:h:h'), '\\', '\/', "g") . "/bin/vimparse.pl" . " -c %o %s:p",
-\		"quickfix/errorformat" : '%f:%l:%m',
+\		"outputter/quickfix/errorformat" : '%f:%l:%m',
 \	},
 \
 \
@@ -217,7 +217,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/php" : {
 \		"command" : "php",
 \		"exec"    : "%c %o -l %s:p",
-\		"quickfix/errorformat" : '%m\ in\ %f\ on\ line\ %l',
+\		"outputter/quickfix/errorformat" : '%m\ in\ %f\ on\ line\ %l',
 \	},
 \
 \
@@ -230,7 +230,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
-\		"quickfix/errorformat" : '%f:%l:%m',
+\		"outputter/quickfix/errorformat" : '%f:%l:%m',
 \	},
 \
 \	"ruby/watchdogs_checker" : {
@@ -247,7 +247,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rubocop" : {
 \		"command" : "rubocop",
 \		"exec"    : "%c %o %s:p",
-\		"quickfix/errorformat" : '%f:%l:%c:%m',
+\		"outputter/quickfix/errorformat" : '%f:%l:%c:%m',
 \	},
 \
 \
@@ -260,7 +260,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/sass" : {
 \		"command" : "sass",
 \		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
-\		"quickfix/errorformat"
+\		"outputter/quickfix/errorformat"
 \			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
 \			. ',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
 \	},
@@ -275,7 +275,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/scss" : {
 \		"command" : "sass",
 \		"exec"    : "%c %o --check ".(executable("compass") ? "--compass" : "")." %s:p",
-\		"quickfix/errorformat"
+\		"outputter/quickfix/errorformat"
 \			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
 \			.',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
 \	},
@@ -290,7 +290,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/scalac" : {
 \		"command" : "scalac",
 \		"exec"    : "%c %o %s:p",
-\		"quickfix/errorformat"    : '%f:%l:\ error:\ %m,%-Z%p^,%-C%.%#,%-G%.%#',
+\		"outputter/quickfix/errorformat"    : '%f:%l:\ error:\ %m,%-Z%p^,%-C%.%#,%-G%.%#',
 \	 },
 \
 \
@@ -303,7 +303,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/sh" : {
 \		"command" : "sh",
 \		"exec"    : "%c -n %o %s:p",
-\		"quickfix/errorformat"    : '%f:\ line\ %l:%m',
+\		"outputter/quickfix/errorformat"    : '%f:\ line\ %l:%m',
 \	 },
 \
 \
@@ -316,7 +316,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/zsh" : {
 \		"command" : "zsh",
 \		"exec"    : "%c -n %o %s:p",
-\		"quickfix/errorformat"    : '%f:%l:%m',
+\		"outputter/quickfix/errorformat"    : '%f:%l:%m',
 \	 },
 \
 \
