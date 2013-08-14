@@ -34,8 +34,8 @@ endfunction
 function! s:run(args, deftype, ...)
 	let is_output_msg = a:0 ? a:1 : 0
 	call s:setup_quickrun_config()
-	
-	let config = extend(deepcopy(get(g:quickrun_config, "watchdogs_checker/_", {})), quickrun#config(a:args))
+
+	let config = quickrun#config(a:args)
 	if !has_key(config, "type")
 		let config.type = a:deftype
 	endif
@@ -47,7 +47,7 @@ function! s:run(args, deftype, ...)
 		endif
 		return
 	endif
-	
+
 	call quickrun#run(config)
 endfunction
 

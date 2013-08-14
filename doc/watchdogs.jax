@@ -34,7 +34,7 @@
 ==============================================================================
 概要						*watchdogs-introduction*
 
-|watchdogs| は thinca 氏が作成された |quickrun| をバックエンドとしたシンタック
+*watchdogs.vim* は thinca 氏が作成された |quickrun| をバックエンドとしたシンタック
 スチェックを行うためのプラグインです。
 |quickrun| をバックエンドに使用することで、非同期でシンタックスチェックを行う
 ことができ、さらに幅広い拡張を行うこともできます。
@@ -204,7 +204,6 @@
 - "cofee"
   coffee の -c -l オプションで cofeee のシンタックスチェックを行います。
 
-- "coffeelint"
   coffeelint で coffee のシンタックスチェックを行います。
 
 - "vimlint"
@@ -281,8 +280,45 @@
 ==============================================================================
 コンフィグ					*watchdogs-config*
 
-|watchdogs| は |g:quickrun_config| に設定を記述する事によって、filetype ごとに
-使用するツールを設定したり、新しいツールの設定を追加することが出来ます。
+|watchdogs.vim| は |g:quickrun_config| に設定を記述する事によって、filetype ごと
+に使用するツールを設定したり、新しいツールの設定を追加することが出来ます。
+
+どの watchdogs_checker/* の設定を使用するかは次のような順で決定されます。
+
+1．コマンドラインで指定された -type の値
+2．|b:watchdogs_checker_type|
+3．|g:quickrun_config| の &filetype/watchdogs_checker の type の値
+
+
+------------------------------------------------------------------------------
+filetype ごとにツールを設定			*watchdogs-config-filetype*
+
+記述されているツールの設定を filetype ごとで使用する為には
+g:quickrun_config.{filetype}/watchdogs_checker.type に記述します。
+
+Example >
+	" filetype=javascript で使用するツールを jshint にする
+	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/jshint"
+	\}
+
+	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
+	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	\	"type" : "watchdogs_checker/g++",
+	\	"cmdopt" : "-Wall",
+	\}
+<
+
+
+また、b:watchdogs_checker_type に設定することで、それを使用する事も出来ます。
+
+Example >
+	" そのバッファで使用される設定を記述
+	let b:watchdogs_checker_type = "watchdogs_checker/clang"
+<
+
+b:watchdogs_checker_type は g:quickrun_config に書かれている設定より優先順位が
+高いです。
 
 
 ------------------------------------------------------------------------------
@@ -312,46 +348,26 @@ Example >
 
 
 ------------------------------------------------------------------------------
-filetype ごとにツールを設定			*watchdogs-config-filetype*
-
-記述されているツールの設定を filetype ごとで使用する為には
-g:quickrun_config.{filetype}/watchdogs_checker.type に記述します。
-
-Example >
-	" filetype=javascript で使用するツールを jshint にする
-	let g:quickrun_config["javascript/watchdogs_checker"] = {
-	\	"type" : "watchdogs_checker/jshint"
-	\}
-
-	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
-	let g:quickrun_config["javascript/watchdogs_checker"] = {
-	\	"type" : "watchdogs_checker/g++",
-	\	"cmdopt" : "-Wall",
-	\}
-<
-
-
-また、b:watchdogs_checker_type に設定することで、それを使用する事も出来ます。
-
-Example >
-	" そのバッファで使用される設定を記述
-	let b:watchdogs_checker_type = "javascript/watchdogs_checker"
-<
-
-b:watchdogs_checker_type は g:quickrun_config に書かれている設定より優先順位が
-高いです。
-
-
-------------------------------------------------------------------------------
 watchdogs_checker/* 全てに共通する設定を定義	*watchdogs-config-default*
 
-g:quickrun_config.watchdogs_checker/_ に watchdogs_checker/* の元となる設定を記
-述することが出来ます。
+|g:quickrun_config| の watchdogs_checker/_ に watchdogs_checker/* の全てに適用
+される設定を記述することができます。
+これは |watchdogs#setup()| 時にすべての watchdogs_checker/* に設定が追加され
+ます。
+すべての watchdogs_checker/* で共通の設定を行いたい場合はこれに設定を行ってく
+ださい。
+ここに記述された設定は各 watchdogs_checker/* よりも優先順位が低いです。
 
 >
 	" :WatchdogsRun の出力先を buffer に指定する
 	let g:quickrun_config["watchdogs_checker/_"] = {
 	\	"outputter" : "buffer",
+	\}
+
+	" :WatchdogsRun -type watchdogs_checker/clang
+	" の場合は quickfix へ出力する
+	let g:quickrun_config["watchdogs_checker/clang"] = {
+	\	"outputter" : "quickfix",
 	\}
 <
 
@@ -446,7 +462,26 @@ Example >
 	挙動に関してはそちらを参照して下さい。
 
 
+------------------------------------------------------------------------------
+関数						*watchdogs-functions*
 
+watchdogs#setup({config})			*watchdogs#setup()*
+	{config} に対して watchdogs.vim が定義している |g:quickrun_config| の
+	設定を追加します。
+	この関数は |:WatchdogsRun| の初回起動時に呼び出され
+	|g:quickrun_config| へと設定を追加します。
+	|g:quickrun_config| の値を変更した場合、この関数を使用して設定を追加す
+	る方がより安全です。
+
+Example: >
+	" ユーザ側で g:quickrun_config を定義
+	let g:quickrun_config = {
+		...
+	\}
+	
+	" watchdogs.vim の設定を追加
+	call watchdogs#setup(g:quickrun_config)
+<
 
 ==============================================================================
 設定						*watchdogs-setting*
@@ -491,12 +526,18 @@ g:watchdogs_check_CursorHold_enables		 *g:watchdogs_check_CursorHold_enables*
 	" Default
 	let g:watchdogs_check_CursorHold_enables = {}
 <
+b:watchdogs_checker_type			*b:watchdogs_checker_type*
+	そのバッファで使用する設定名です。
+Example >
+	" そのバッファで使用される設定を記述
+	let b:watchdogs_checker_type = "watchdogs_checker/clang"
+<
 
 
 ==============================================================================
 設定例						*watchdogs-examples*
 
-いくつかの g:quickrun_confg の設定例です。
+いくつかの g:quickrun_config の設定例です。
 ユーザ側で watchdogs.vim の拡張を行いたい場合に参考にして下さい。
 
 
@@ -572,7 +613,7 @@ Example: >
 
 
 ------------------------------------------------------------------------------
-quickfix ウィンドウを開かない		*watchdogs-examples-unopen_quickfix*
+quickfix ウィンドウを		*watchdogs-examples-unopen_quickfix*
 
 |quickfix| ウィンドウが開いてほしくない場合、
 |watchdogs-examples-close_quickfix| よりもこちらの設定の方が有効です。

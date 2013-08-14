@@ -347,17 +347,32 @@ let g:watchdogs#default_config = {
 
 function! watchdogs#setup(config, ...)
 	let flag = a:0 && a:1 ? "force" : "keep"
+	let base = "watchdogs_checker/_"
+	let a:config[base] = extend(get(a:config, base, {}), g:watchdogs#default_config[base], flag)
+" 	PP a:config[base]
 	for [type, config] in items(g:watchdogs#default_config)
 		if has_key(a:config, type)
 			let a:config[type] = extend(
 \				a:config[type],
-\				deepcopy(g:watchdogs#default_config[type]),
+\				g:watchdogs#default_config[type],
 \				flag
 \			)
 		else
 			let a:config[type] = deepcopy(config)
 		endif
 	endfor
+
+	for [type, config] in items(a:config)
+		if type =~# '^watchdogs_checker/.\+$'
+			let a:config[type] = extend(
+\				a:config[type],
+\				a:config[base],
+\				flag
+\			)
+		endif
+	endfor
+
+	return a:config
 endfunction
 
 
