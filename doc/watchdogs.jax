@@ -339,7 +339,7 @@ b:watchdogs_checker_type は g:quickrun_config に書かれている設定より
 
 
 ------------------------------------------------------------------------------
-watchdogs/* 全てに共通する設定を定義		*watchdogs-config-default*
+watchdogs_checker/* 全てに共通する設定を定義	*watchdogs-config-default*
 
 g:quickrun_config.watchdogs_checker/_ に watchdogs_checker/* の元となる設定を記
 述することが出来ます。
@@ -351,8 +351,6 @@ g:quickrun_config.watchdogs_checker/_ に watchdogs_checker/* の元となる設
 	\}
 <
 
-また、g:quickrun_config.watchdogs/_ に定義されている設定は |b:quickrun_config|
-よりも優先順位が高いので注意して下さい。
 quickrun_config の詳細は |b:quickrun_config| を参照して下さい。
 
 
