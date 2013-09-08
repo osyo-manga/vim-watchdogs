@@ -330,7 +330,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
 \		"exec" : '%C -N -u NONE -i NONE -V1 -e -s -c "set rtp+=' . s:get_vimlparser_plugin_dir() . ',' . s:get_vimlint_syngan_plugin_dir() . '" -c "call vimlint#vimlint(''%s'', {})" -c "qall!"',
-\		'errorformat': '%f:%l:%c:%n: %m',
+\		'errorformat': '%f:%l:%c:%m',
 \	 },
 \
 \	"watchdogs_checker/vimlint_by_dbakker" : {
