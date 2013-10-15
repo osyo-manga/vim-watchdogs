@@ -191,7 +191,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
-\		"exec"    : "%c %s:p",
+\		"exec"    : "%c %o %s:p",
 \		"errorformat" : "%f: line %l\\,\ col %c\\, %m",
 \	},
 \
