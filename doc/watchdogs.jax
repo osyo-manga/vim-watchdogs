@@ -174,11 +174,14 @@
 - "dmd"
   dmd の -c オプションで D言語のシンタックスチェックを行います。
 
-- "go_vet"
-  go の vet オプションで GO言語のシンタックスチェックを行います。
+- "gofmt"
+  gofmt で GO言語のシンタックスチェックを行います。
 
 - "govet"
   govet で GO言語のシンタックスチェックを行います。
+
+- "go_vet"
+  go の vet オプションで GO言語のシンタックスチェックを行います。
 
 - "gcc"
   gcc の -fsyntax-only オプションで C言語のシンタックスチェックを行います。
@@ -256,7 +259,7 @@
   デフォルト : "watchdogs_checker/dmd"
 
 - "go"
-  デフォルト : "watchdogs_checker/govet"
+  デフォルト : "watchdogs_checker/gofmt"
 
 - "c"
   デフォルト : "watchdogs_checker/c"

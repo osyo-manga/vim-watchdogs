@@ -147,9 +147,16 @@ let g:watchdogs#default_config = {
 \
 \	"go/watchdogs_checker" : {
 \		"type"
+\			: executable("gofmt") ? "watchdogs_checker/gofmt"
 \			: executable("govet") ? "watchdogs_checker/govet"
 \			: executable("go")    ? "watchdogs_checker/go_vet"
 \			: ""
+\	},
+\
+\	"watchdogs_checker/gofmt" : {
+\		"command" : "gofmt",
+\		"exec"    : "%c -l %o %s:p",
+\		"errorformat" : '%f:%l:%c: %m,%-G%.%#',
 \	},
 \
 \	"watchdogs_checker/govet" : {
