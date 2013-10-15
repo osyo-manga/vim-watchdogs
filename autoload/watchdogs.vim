@@ -145,6 +145,26 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
+\	"go/watchdogs_checker" : {
+\		"type"
+\			: executable("govet") ? "watchdogs_checker/govet"
+\			: executable("go")    ? "watchdogs_checker/go_vet"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/govet" : {
+\		"command" : "govet",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : 'govet: %.%\+: %f:%l:%c: %m,%W%f:%l: %m,%-G%.%#',
+\	},
+\
+\	"watchdogs_checker/go_vet" : {
+\		"command" : "go",
+\		"exec"    : "%c vet %o %s:p",
+\		"errorformat" : 'vet: %.%\+: %f:%l:%c: %m,%W%f:%l: %m,%-G%.%#',
+\	},
+\
+\
 \	"haskell/watchdogs_checker" : {
 \		"type"
 \			: executable("ghc-mod") ? "watchdogs_checker/ghc-mod"

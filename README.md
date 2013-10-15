@@ -30,6 +30,9 @@ Async syntax check plugin.
  * coffeelint
 * D
  * dmd
+* go
+ * go vet
+ * govet
 * Haskell
  * ghc-mod
  * hlint
