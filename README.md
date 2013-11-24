@@ -26,7 +26,7 @@ Async syntax check plugin.
  * clang-check
  * msvc
 * coffee
- * cofee
+ * coffee
  * coffeelint
 * D
  * dmd
