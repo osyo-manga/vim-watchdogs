@@ -608,6 +608,7 @@ Example: >
 
 ------------------------------------------------------------------------------
 quickfix ウィンドウを自動的に閉じる		*watchdogs-examples-close_quickfix*
+|watchdogs-examples-unopen_quickfix| も一緒に参照してください。
 
 Example: >
 	" hook-close_quickfix を有効にする
@@ -621,11 +622,13 @@ Example: >
 	" watchdogs.vim の設定を追加
 	call watchdogs#setup(g:quickrun_config)
 <
-<
+
+NOTE: この設定を使用した場合、意図しないウィンドウへ移動する可能性があります。
+その場合は |watchdogs-examples-unopen_quickfix| を使用してください。
 
 
 ------------------------------------------------------------------------------
-quickfix ウィンドウを		*watchdogs-examples-unopen_quickfix*
+quickfix ウィンドウを開かせない		*watchdogs-examples-unopen_quickfix*
 
 |quickfix| ウィンドウが開いてほしくない場合、
 |watchdogs-examples-close_quickfix| よりもこちらの設定の方が有効です。
