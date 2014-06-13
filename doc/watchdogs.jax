@@ -223,6 +223,10 @@
   vim-lint で Vim script のシンタックスチェックを行います。
   dbakker/vim-lint - https://github.com/dbakker/vim-lint
 
+- "haml"
+  haml の --check --trace オプションで haml のシンタックスチェックを
+  行います。
+
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
@@ -287,6 +291,9 @@
 
 - "vim"
   デフォルト : "watchdogs_checker/vimlint"
+
+- "haml"
+  デフォルト : "watchdogs_checker/haml"
 
 
 ==============================================================================

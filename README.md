@@ -34,6 +34,8 @@ Async syntax check plugin.
  * gofmt
  * govet
  * go vet
+* Haml
+ * haml
 * Haskell
  * ghc-mod
  * hlint

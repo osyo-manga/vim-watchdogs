@@ -172,6 +172,18 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
+\	"haml/watchdogs_checker" : {
+\		"type"
+\			: executable("haml")   ? "watchdogs_checker/haml"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/haml" : {
+\		"command" : "haml",
+\		"cmdopt" : "--check --trace",
+\	},
+\
+\
 \	"haskell/watchdogs_checker" : {
 \		"type"
 \			: executable("ghc-mod") ? "watchdogs_checker/ghc-mod"
