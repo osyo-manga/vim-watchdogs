@@ -50,6 +50,7 @@ Async syntax check plugin.
  * php
 * Python
  * pyflakes
+ * flake8
 * Ruby
  * ruby
  * rubocop

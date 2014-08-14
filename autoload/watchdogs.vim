@@ -268,11 +268,18 @@ let g:watchdogs#default_config = {
 \	"python/watchdogs_checker" : {
 \		"type"
 \			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
+\			: executable("flake8") ? "watchdogs_checker/pyflakes"
 \			: ""
 \	},
 \	
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
+\		"exec"    : '%c %o %s:p',
+\		"errorformat" : '%f:%l:%m',
+\	},
+\	
+\	"watchdogs_checker/flake8" : {
+\		"command" : "flake8",
 \		"exec"    : '%c %o %s:p',
 \		"errorformat" : '%f:%l:%m',
 \	},

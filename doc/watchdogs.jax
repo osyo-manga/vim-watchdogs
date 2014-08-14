@@ -9,14 +9,15 @@
 使い方				|watchdogs-usage|
 対応しているシンタックスチェックツール				|watchdogs-tools|
 コンフィグ			|watchdogs-config|
-  ツールの設定を追加		  |watchdogs-config-tools|
   filetype ごとにツールを設定	  |watchdogs-config-filetype|
-  watchdogs/* 全てに共通する設定を定義				  |watchdogs-config-default|
+  ツールの設定を追加		  |watchdogs-config-tools|
+  watchdogs_checker/* 全てに共通する設定を定義			  |watchdogs-config-default|
 自動シンタックスチェック	|watchdogs-auto|
   ファイルの書き込み後		  |watchdogs-auto-BufWritePost|
   一定時間キー入力がなかった場合にチェックを行う		  |watchdogs-auto-CursorHold|
 インターフェース		|watchdogs-interface|
   コマンド			  |watchdogs-commands|
+  関数				  |watchdogs-functions|
 設定				|watchdogs-setting|
   変数				  |watchdogs-variables|
 設定例				|watchdogs-examples|
@@ -24,7 +25,7 @@
   quickfix のエラーフォマットを指定する				  |watchdogs-examples-erroformat|
   command を変更する		  |watchdogs-examples-command|
   quickfix ウィンドウを自動的に閉じる				  |watchdogs-examples-close_quickfix|
-  quickfix ウィンドウを開かない   |watchdogs-examples-unopen_quickfix|
+  quickfix ウィンドウを開かせない				  |watchdogs-examples-unopen_quickfix|
   vimproc の更新間隔を短くする	  |watchdogs-examples-updatetime|
   一部の filetype のみ無効にする				  |watchdogs-examples-disable|
   新しいツールを定義する	  |watchdogs-examples-add_tool|
@@ -161,6 +162,9 @@
 
 - "pyflakes"
   pyflakes を使用した Python のシンタックスチェックを行います。
+
+- "flake8"
+  flake8 を使用した Python のシンタックスチェックを行います。
 
 - "perl"
   perl の -c オプションで perl のシンタックスチェックを行います。
