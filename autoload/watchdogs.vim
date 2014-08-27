@@ -193,6 +193,7 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("ghc-mod") ? "watchdogs_checker/ghc-mod"
 \			: executable("hlint")   ? "watchdogs_checker/hlint"
+\			: executable("hdevtools")   ? "watchdogs_checker/hdevtools"
 \			: ""
 \	},
 \
@@ -204,6 +205,11 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/hlint" : {
 \		"command" : "hlint",
 \		"exec"    : '%c %o %s:p',
+\	},
+\
+\	"watchdogs_checker/hdevtools" : {
+\		"command" : "hdevtools",
+\		"exec"    : '%c check %o %s:p',
 \	},
 \
 \

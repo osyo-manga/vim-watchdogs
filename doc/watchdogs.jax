@@ -160,6 +160,9 @@
 - "hlint"
   hlint を使用した Haskell のシンタックスチェックを行います。
 
+- "hdevtools"
+  hdevtools を使用した Haskell のシンタックスチェックを行います。
+
 - "pyflakes"
   pyflakes を使用した Python のシンタックスチェックを行います。
 

@@ -39,6 +39,7 @@ Async syntax check plugin.
 * Haskell
  * ghc-mod
  * hlint
+ * hdevtools
 * JavaScript
  * jshint
 * Lua
