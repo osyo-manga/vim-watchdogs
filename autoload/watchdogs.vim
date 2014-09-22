@@ -346,7 +346,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/scalac" : {
 \		"command" : "scalac",
-\		"exec"    : "%c %o %s:p",
+\		"exec"    : "%c %o -Ystop-after:parser %s:p",
 \		"errorformat"    : '%f:%l:\ error:\ %m,%-Z%p^,%-C%.%#,%-G%.%#',
 \	 },
 \
