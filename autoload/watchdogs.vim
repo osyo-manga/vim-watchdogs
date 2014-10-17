@@ -199,7 +199,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/ghc-mod" : {
 \		"command" : "ghc-mod",
-\		"exec"    : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
+\		"exec"    : '%c %o check %s:p',
 \	},
 \
 \	"watchdogs_checker/hlint" : {
