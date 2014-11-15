@@ -213,17 +213,17 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
-\   "java/watchdogs_checker" : {
-\       "type"
-\           : executable("javac") ? "watchdogs_checker/javac"
-\           : ""
-\   },
+\	"java/watchdogs_checker" : {
+\		"type"
+\			: executable("javac") ? "watchdogs_checker/javac"
+\			: ""
+\	},
 \
-\   "watchdogs_checker/javac" : {
-\       "command" : "javac",
-\       "exec"    : "%c -d $TEMP %o %S:p",
-\       "errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
-\   },
+\	"watchdogs_checker/javac" : {
+\		"command" : "javac",
+\		"exec"    : "%c -d $TEMP %o %S:p",
+\		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
+\	},
 \
 \
 \	"javascript/watchdogs_checker" : {
