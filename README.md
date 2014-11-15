@@ -40,6 +40,8 @@ Async syntax check plugin.
  * ghc-mod
  * hlint
  * hdevtools
+* Java
+ * javac
 * JavaScript
  * jshint
 * Lua
