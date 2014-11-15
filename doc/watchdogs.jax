@@ -151,6 +151,10 @@
   rubocop を使用して Ruby のシンタックスチェックを行います。
   bbatsov/rubocop - https://github.com/bbatsov/rubocop
 
+- "javac"
+  javac を使用した Java のシンタックスチェックを行います。
+  classpathの設定は行っていませんので、必要に応じてcmdoptに追加してください。
+
 - "jshint"
   jshint を使用した JavaScript のシンタックスチェックを行います。
 
@@ -247,6 +251,9 @@
 
 - "ruby"
   デフォルト : "watchdogs_checker/ruby"
+
+- "java"
+  デフォルト : "watchdogs_checker/javac"
 
 - "javascript"
   デフォルト : "watchdogs_checker/jshint"
