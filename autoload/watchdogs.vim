@@ -200,6 +200,8 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/ghc-mod" : {
 \		"command" : "ghc-mod",
 \		"exec"    : '%c %o check %s:p',
+\		"errorformat" : '%f:%l:%c:%trror: %m,%f:%l:%c:%tarning: %m,%f:%l:%c:parse %trror %m,%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m,%f:%l:%c:%m,%E%f:%l:%c:,%Z%m',
+\		"tempfile": 'TemporaryWatchDogSourceFile.hs'
 \	},
 \
 \	"watchdogs_checker/hlint" : {
