@@ -253,6 +253,15 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%.%#: %#%f:%l: %m',
 \	},
 \
+\	"nim/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/nim",
+\	},
+\
+\	"watchdogs_checker/nim" : {
+\	"command" : "nim",
+\	"cmdopt"  : "check",
+\	"errorformat" : '%-GHint: %m,%E%f(%l\, %c) Error: %m,%W%f(%l\, %c) Hint: %m',
+\ },
 \
 \	"perl/watchdogs_checker" : {
 \		"type"
