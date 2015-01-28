@@ -410,7 +410,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
-\		"exec" : '%C -N -u NONE -i NONE -V1 -e -s -c "set rtp+=' . s:get_vimlparser_plugin_dir() . ',' . s:get_vimlint_syngan_plugin_dir() . '" -c "call vimlint#vimlint(''%s'', %{ exists(''g:vimlint#config'') ? string(g:vimlint#config) : g:watchdogs#vimlint_empty_config })" -c "qall!"',
+\		"exec" : '%C -X -N -u NONE -i NONE -V1 -e -s -c "set rtp+=' . s:get_vimlparser_plugin_dir() . ',' . s:get_vimlint_syngan_plugin_dir() . '" -c "call vimlint#vimlint(''%s'', %{ exists(''g:vimlint#config'') ? string(g:vimlint#config) : g:watchdogs#vimlint_empty_config })" -c "qall!"',
 \		'errorformat': '%f:%l:%c:%trror: %m,%f:%l:%c:%tarning: %m,%f:%l:%c:%m',
 \	 },
 \
