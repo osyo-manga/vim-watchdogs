@@ -237,7 +237,20 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : "%f: line %l\\,\ col %c\\, %m",
+\		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
+\	},
+\
+\
+\	"json/watchdogs_checker" : {
+\		"type"
+\			: executable("jsonlint") ? "watchdogs_checker/jsonlint"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/jsonlint" : {
+\		"command" : "jsonlint",
+\		"exec"    : "%c %o -c %s:p",
+\		"errorformat" : '%f: line %l\\, col %c\\, %m',
 \	},
 \
 \
