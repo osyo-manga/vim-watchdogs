@@ -111,11 +111,12 @@ function! s:watchdogs_check_cursorhold(filetype)
 	if get(b:, "watchdogs_checked_cursorhold", 1)
 		return
 	endif
+
 	if (g:watchdogs_check_CursorHold_enable
 \	|| get(g:watchdogs_check_CursorHold_enables, a:filetype, 0))
 \	&& get(g:watchdogs_check_CursorHold_enables, a:filetype, 1)
-		WatchdogsRunSilent -hook/watchdogs_quickrun_running_checker/enable 0
 		let b:watchdogs_checked_cursorhold=1
+		WatchdogsRunSilent -hook/watchdogs_quickrun_running_checker/enable 0
 	endif
 endfunction
 
