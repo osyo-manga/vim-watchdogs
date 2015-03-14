@@ -547,7 +547,7 @@ g:watchdogs_check_BufWritePost_enables		 *g:watchdogs_check_BufWritePost_enables
 	let g:watchdogs_check_BufWritePost_enables = {}
 <
 
-g:watchdogs_check_CursorHold_enable		 *g:watchdogs_check_CursorHold_enable*
+g:watchdogs_check_CursorHold_enable	 *g:watchdogs_check_CursorHold_enable*
 	一定時間キー入力がなかった場合の自動チェックの制御を行います。
 	詳しくは |watchdogs-auto-CursorHold| を参照して下さい。
 >
@@ -555,7 +555,7 @@ g:watchdogs_check_CursorHold_enable		 *g:watchdogs_check_CursorHold_enable*
 	let g:watchdogs_check_CursorHold_enable = 0
 <
 
-g:watchdogs_check_CursorHold_enables		 *g:watchdogs_check_CursorHold_enables*
+g:watchdogs_check_CursorHold_enables	 *g:watchdogs_check_CursorHold_enables*
 	一定時間キー入力がなかった場合の自動チェックの制御を行います。
 	詳しくは |watchdogs-auto-CursorHold| を参照して下さい。
 	|g:watchdogs_check_CursorHold_enable| とは違い、filetype ごとの設定を
@@ -570,6 +570,13 @@ b:watchdogs_checker_type			*b:watchdogs_checker_type*
 Example >
 	" そのバッファで使用される設定を記述
 	let b:watchdogs_checker_type = "watchdogs_checker/clang"
+<<
+g:watchdogs_check_BufWritePost_enable_on_wq
+				*g:watchdogs_check_BufWritePost_enable_on_wq*
+	0 が設定されている場合、|:wq| 時に |watchdogs-auto-BufWritePost|
+	が実行されなくなります。
+Default: >
+	let g:watchdogs_check_BufWritePost_enable_on_wq = 1
 <
 
 
@@ -776,6 +783,17 @@ Example: >
 	" watchdogs.vim の設定を追加
 	call watchdogs#setup(g:quickrun_config)
 <
+<
+------------------------------------------------------------------------------
+|:wq| 時に実行されないようにする		*watchdogs-examples-no-run-wq*
+
+|g:watchdogs_check_BufWritePost_enable_on_wq| に 0 を設定します。
+
+Example: >
+    let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+<
+
+
 
 
 

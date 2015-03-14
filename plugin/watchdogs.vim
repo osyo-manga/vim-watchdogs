@@ -72,8 +72,17 @@ let g:watchdogs_check_BufWritePost_enable =
 let g:watchdogs_check_BufWritePost_enables =
 \	get(g:, "watchdogs_check_BufWritePost_enables", {})
 
+let g:watchdogs_check_BufWritePost_enable_on_wq =
+\	get(g:, "g:watchdogs_check_BufWritePost_disable_on_wq", 1)
 
+
+let s:called_quit_pre = 0
 function! s:watchdogs_check_bufwrite(filetype)
+	if !g:watchdogs_check_BufWritePost_enable_on_wq && s:called_quit_pre
+		let s:called_quit_pre = 0
+		return
+	endif
+	let s:called_quit_pre = 0
 	if exists("*quickrun#is_running")
 		if quickrun#is_running()
 			return
@@ -123,6 +132,8 @@ endfunction
 
 augroup watchdogs-plugin
 	autocmd!
+	autocmd QuitPre * let s:called_quit_pre = 1
+	autocmd CursorMoved * let s:called_quit_pre = 0
 	autocmd BufWritePost * call <SID>watchdogs_check_bufwrite(&filetype)
 
 	autocmd BufWritePost * let b:watchdogs_checked_cursorhold = 0
