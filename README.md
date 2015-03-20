@@ -36,6 +36,7 @@ Async syntax check plugin.
  * go vet
 * Haml
  * haml
+ * haml-lint
 * Haskell
  * ghc-mod
  * hlint

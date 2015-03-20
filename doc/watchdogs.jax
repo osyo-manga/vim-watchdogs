@@ -238,6 +238,10 @@
   haml の --check --trace オプションで haml のシンタックスチェックを
   行います。
 
+- "haml-lint"
+  haml-lint で haml のシンタックスチェックを行ないます。
+  causes/haml-lint - https://github.com/causes/haml-lint
+
 - "jsonlint"
   jsonlint を使用した JSON のシンタックスチェックを行います。
 
