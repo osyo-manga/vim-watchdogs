@@ -244,7 +244,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
+\		"errorformat" : '%f: line %l\,\ col %c\, %m',
 \	},
 \
 \
