@@ -423,10 +423,16 @@ let g:watchdogs#default_config = {
 \
 \	"vim/watchdogs_checker" : {
 \		"type"
+\			: executable("vint") ? "watchdogs_checker/vint"
 \			: s:executable_vim_vimlint() ? "watchdogs_checker/vimlint"
 \			: s:executable_vimlint() ? "watchdogs_checker/vimlint_by_dbakker"
 \			: ""
 \	},
+\
+\	"watchdogs_checker/vint" : {
+\		'command': 'vint',
+\		"exec" : '%c %s',
+\	 },
 \
 \	"watchdogs_checker/vimlint" : {
 \		'command': 'vim',
