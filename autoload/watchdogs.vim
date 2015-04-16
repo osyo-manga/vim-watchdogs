@@ -431,7 +431,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/vint" : {
 \		'command': 'vint',
-\		"exec" : '%c %s',
+\		"exec" : '%c %o %s',
 \	 },
 \
 \	"watchdogs_checker/vimlint" : {
