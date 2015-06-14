@@ -238,6 +238,7 @@ let g:watchdogs#default_config = {
 \	"javascript/watchdogs_checker" : {
 \		"type"
 \			: executable("jshint") ? "watchdogs_checker/jshint"
+\			: executable("eslint") ? "watchdogs_checker/eslint"
 \			: ""
 \	},
 \
@@ -247,6 +248,12 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%f: line %l\,\ col %c\, %m',
 \	},
 \
+\	"watchdogs_checker/eslint" : {
+\		"command" : "eslint",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m',
+\	},
 \
 \	"json/watchdogs_checker" : {
 \		"type"

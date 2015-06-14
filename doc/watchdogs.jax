@@ -158,6 +158,9 @@
 - "jshint"
   jshint を使用した JavaScript のシンタックスチェックを行います。
 
+- "eslint"
+  eslint を使用した JavaScript のシンタックスチェックを行います。
+
 - "ghc-mod"
   ghc-mod を使用した Haskell のシンタックスチェックを行います。
 

@@ -45,6 +45,7 @@ Async syntax check plugin.
  * javac
 * JavaScript
  * jshint
+ * eslint
 * JSON
  * jsonlint
 * Lua
