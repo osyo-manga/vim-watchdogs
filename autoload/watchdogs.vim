@@ -75,7 +75,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/g++" : {
 \		"command"   : "g++",
-\		"exec"      : "%c %o -std=gnu++0x -fsyntax-only %s:p ",
+\		"exec"      : "%c -std=gnu++0x %o -fsyntax-only %s:p ",
 \	},
 \
 \	"watchdogs_checker/g++03" : {
@@ -85,7 +85,7 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/clang++" : {
 \		"command"   : "clang++",
-\		"exec"      : "%c %o -std=gnu++0x -fsyntax-only %s:p ",
+\		"exec"      : "%c -std=gnu++0x %o -fsyntax-only %s:p ",
 \	},
 \
 \	"watchdogs_checker/clang++03" : {
