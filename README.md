@@ -50,6 +50,10 @@ Async syntax check plugin.
  * jsonlint
 * Lua
  * luac
+* Nim
+ * nim
+* Markdown
+ * redpen
 * Perl
  * perl
  * vimparse.pl

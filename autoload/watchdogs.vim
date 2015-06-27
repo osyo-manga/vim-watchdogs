@@ -280,15 +280,22 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%.%#: %#%f:%l: %m',
 \	},
 \
+\
 \	"nim/watchdogs_checker" : {
 \		"type" : "watchdogs_checker/nim",
 \	},
 \
 \	"watchdogs_checker/nim" : {
-\	"command" : "nim",
-\	"cmdopt"  : "check",
-\	"errorformat" : '%-GHint: %m,%E%f(%l\, %c) Error: %m,%W%f(%l\, %c) Hint: %m',
-\ },
+\		"command" : "nim",
+\		"cmdopt"  : "check",
+\		"errorformat" : '%-GHint: %m,%E%f(%l\, %c) Error: %m,%W%f(%l\, %c) Hint: %m',
+\	},
+\
+\
+\	"markdown/watchdogs_checker" : {
+\		"type" : "watchdogs_checker/redpen"
+\	},
+\
 \
 \	"perl/watchdogs_checker" : {
 \		"type"
@@ -452,6 +459,12 @@ let g:watchdogs#default_config = {
 \		'exec': '%C ' . s:get_vimlint() . ' %s',
 \		"runner" : "vimproc",
 \		'errorformat': '%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m',
+\	},
+\
+\
+\	"watchdogs_checker/redpen" : {
+\		"command" : "redpen",
+\		"exec"    : "%c %o %s:p",
 \	},
 \
 \
