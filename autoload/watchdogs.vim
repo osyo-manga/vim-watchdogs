@@ -293,7 +293,9 @@ let g:watchdogs#default_config = {
 \
 \
 \	"markdown/watchdogs_checker" : {
-\		"type" : "watchdogs_checker/redpen"
+\		"type"
+\			: executable("redpen") ? "watchdogs_checker/redpen"
+\			: ""
 \	},
 \
 \
