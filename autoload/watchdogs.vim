@@ -107,7 +107,8 @@ let g:watchdogs#default_config = {
 \
 \	"typescript/watchdogs_checker" : {
 \		"type"
-\			: executable("tsc") ? "watchdogs_checker/tsc"
+\			: executable("tsc")    ? "watchdogs_checker/tsc"
+\			: executable("tslint") ? "watchdogs_checker/tslint"
 \			: ""
 \	},
 \
@@ -115,6 +116,12 @@ let g:watchdogs#default_config = {
 \		"command" : "tsc",
 \		"exec"	: "%c %s:p",
 \		"errorformat" : '%+A\ %#%f\ %#(%l\\,%c):\ %m,%C%m',
+\	},
+\
+\	"watchdogs_checker/tslint" : {
+\		"command" : "tslint",
+\		"exec"	: "%c %s:p",
+\		"errorformat" : '%f[%l\\,\ %c]:\ %m',
 \	},
 \
 \
