@@ -144,6 +144,17 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%f\,%l\,%trror\,%m',
 \	},
 \
+\	"css/watchdogs_checker" : {
+\		"type"
+\			: executable("csslint") ? "watchdogs_checker/csslint"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/csslint" : {
+\		"command" : "csslint",
+\		"exec"    : "%c --format=compact %o %s:p",
+\		"errorformat" : '%f:\ line\ %l\\,\ col\ %c\\,\ %m',
+\	},
 \
 \	"d/watchdogs_checker" : {
 \		"type"
