@@ -221,13 +221,21 @@
 - "scss"
   scss で --check オプションで scss のシンタックスチェックを行います。
 
-- "typescript"
+- "tsc"
   tsc で typescript のシンタックスチェックを行います。
+
+- "tslint"
+  tslint で typescript のシンタックスチェックを行います。
+  palantir/tslint - https://github.com/palantir/tslint
 
 - "coffee"
   coffee の -c -l オプションで coffee のシンタックスチェックを行います。
 
   coffeelint で coffee のシンタックスチェックを行います。
+
+- "csslint"
+  csslint で CSS のシンタックスチェックを行います。
+  CSSLint/csslint - https://github.com/CSSLint/csslint
 
 - "vimlint"
   vim-vimlint で Vim script のシンタックスチェックを行います。
