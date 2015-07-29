@@ -28,6 +28,8 @@ Async syntax check plugin.
 * coffee
  * coffee
  * coffeelint
+* css
+ * csslint
 * D
  * dmd
 * go
@@ -75,6 +77,7 @@ Async syntax check plugin.
  * sh
 * TypeScript
  * tsc
+ * tslint
 * Vim script
  * vimlint
  * vimlint_by_dbakker
