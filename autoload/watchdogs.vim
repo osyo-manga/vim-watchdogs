@@ -339,6 +339,7 @@ let g:watchdogs#default_config = {
 \	"php/watchdogs_checker" : {
 \		"type"
 \			: executable("php") ? "watchdogs_checker/php"
+\			: executable("phpcs") ? "watchdogs_checker/phpcs"
 \			: ""
 \	},
 \
@@ -346,6 +347,12 @@ let g:watchdogs#default_config = {
 \		"command" : "php",
 \		"exec"    : "%c %o -l %s:p",
 \		"errorformat" : '%m\ in\ %f\ on\ line\ %l',
+\	},
+\
+\	"watchdogs_checker/phpcs" : {
+\		"command" : "phpcs",
+\		"exec"    : "%c --report=emacs %o %s:p",
+\		"errorformat" : '%f:%l:%c:\ %m',
 \	},
 \
 \
