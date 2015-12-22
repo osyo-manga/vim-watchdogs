@@ -61,6 +61,7 @@ Async syntax check plugin.
  * vimparse.pl
 * PHP
  * php
+ * phpcs
 * Python
  * pyflakes
  * flake8

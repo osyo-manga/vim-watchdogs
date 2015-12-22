@@ -182,6 +182,10 @@
 - "php"
   php の -l オプションで php のシンタックスチェックを行います。
 
+- "phpcs"
+  PHP_CodeSniffer の --report=emacs オプションで php のシンタックスチェックを行います。
+  squizlabs/PHP_CodeSniffer - https://github.com/squizlabs/PHP_CodeSniffer
+
 - "luac"
   luac を使用した lua のシンタックスチェックを行います。
 
