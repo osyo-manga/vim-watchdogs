@@ -224,10 +224,6 @@
   bashate で sh のシンタックスチェックを行います。
   openstack-dev/bashte - https://github.com/openstack-dev/bashate
 
-- "checkbashisms"
-  checkbashisms で sh のシンタックスチェックを行います。
-  devscripts/checkbashisms - http://debian.inode.at/debian/pool/main/d/devscripts/
-
 - "zsh"
   zsh で zsh のシンタックスチェックを行います。
 
@@ -281,6 +277,10 @@
 - "textlint"
   textlint を使用した自然言語で書かれた文書のチェックを行います。
   textlint/textlint - https://github.com/textlint/textlint
+
+- "mdl"
+  mdl を使用した markdown のシンタックスチェックを行います。
+  mivok/markdownlint - https://github.com/mivok/markdownlint
 
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
