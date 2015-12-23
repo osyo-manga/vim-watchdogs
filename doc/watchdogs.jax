@@ -224,6 +224,10 @@
   bashate で sh のシンタックスチェックを行います。
   openstack-dev/bashte - https://github.com/openstack-dev/bashate
 
+- "checkbashisms"
+  checkbashisms で sh のシンタックスチェックを行います。
+  devscripts/checkbashisms - http://debian.inode.at/debian/pool/main/d/devscripts/
+
 - "zsh"
   zsh で zsh のシンタックスチェックを行います。
 

@@ -449,6 +449,7 @@ let g:watchdogs#default_config = {
 \			: executable("sh") ? "watchdogs_checker/sh"
 \			: executable("shellcheck") ? "watchdogs_checker/shellcheck"
 \			: executable("bashate") ? "watchdogs_checker/bashate"
+\			: executable("checkbashisms") ? "watchdogs_checker/checkbashisms"
 \			: ""
 \	},
 \
@@ -466,6 +467,17 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/bashate" : {
 \		"command"     : "bashate",
 \		"errorformat" : "%E[E] %m,%W[W] %m,%Z - %f : L%l,%-G%.%#",
+\	 },
+\
+\	"watchdogs_checker/checkbashisms" : {
+\		"command"     : "checkbashisms",
+\		"errorformat" : "%-Gscript %f is already a bash script; skipping," .
+\										"%Eerror: %f: %m\, opened in line %l," .
+\										"%Eerror: %f: %m," .
+\										"%Ecannot open script %f for reading: %m," .
+\										"%Wscript %f %m,%C%.# lines," .
+\										"%Wpossible bashism in %f line %l (%m):,%C%.%#,%Z.%#," .
+\										"%-G%.%#"
 \	 },
 \
 \
