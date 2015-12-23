@@ -321,7 +321,8 @@ let g:watchdogs#default_config = {
 \		"command" : "textlint",
 \		"exec"    : "%c -f compact %o %s:p",
 \		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
-\						'%W%f: line %l\, col %c\, Warning - %m',
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#'
 \	},
 \
 \	"perl/watchdogs_checker" : {
