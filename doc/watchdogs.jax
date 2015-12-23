@@ -278,6 +278,9 @@
   textlint を使用した自然言語で書かれた文書のチェックを行います。
   textlint/textlint - https://github.com/textlint/textlint
 
+- "eslint-md"
+  eslint-md で markdown 内の JavaScript コードのシンタックスチェックを行います。
+  wooorm/eslint-md - https://github.com/wooorm/eslint-md
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている

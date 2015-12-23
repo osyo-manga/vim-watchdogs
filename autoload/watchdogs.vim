@@ -314,6 +314,7 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("redpen") ? "watchdogs_checker/redpen"
 \			: executable("textlint") ? "watchdogs_checker/textlint"
+\			: executable("eslint-md") ? "watchdogs_checker/eslint-md"
 \			: ""
 \	},
 \
@@ -324,6 +325,15 @@ let g:watchdogs#default_config = {
 \						'%W%f: line %l\, col %c\, Warning - %m,' .
 \						'%-G%.%#'
 \	},
+\
+\	"watchdogs_checker/eslint-md" : {
+\		"command" : "eslint-md",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#',
+\	},
+\
 \
 \	"perl/watchdogs_checker" : {
 \		"type"
