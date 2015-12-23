@@ -448,6 +448,7 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("sh") ? "watchdogs_checker/sh"
 \			: executable("shellcheck") ? "watchdogs_checker/shellcheck"
+\			: executable("bashate") ? "watchdogs_checker/bashate"
 \			: ""
 \	},
 \
@@ -461,6 +462,12 @@ let g:watchdogs#default_config = {
 \		"command" : "shellcheck",
 \		'cmdopt'  : '-f gcc',
 \	 },
+\
+\	"watchdogs_checker/bashate" : {
+\		"command"     : "bashate",
+\		"errorformat" : "%E[E] %m,%W[W] %m,%Z - %f : L%l,%-G%.%#",
+\	 },
+\
 \
 \	"zsh/watchdogs_checker" : {
 \		"type"
