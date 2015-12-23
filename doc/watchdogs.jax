@@ -220,6 +220,10 @@
   shellcheck で sh のシンタックスチェックを行います。
   koalaman/shellcheck - https://github.com/koalaman/shellcheck
 
+- "bashate"
+  bashate で sh のシンタックスチェックを行います。
+  openstack-dev/bashte - https://github.com/openstack-dev/bashate
+
 - "zsh"
   zsh で zsh のシンタックスチェックを行います。
 
