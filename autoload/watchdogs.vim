@@ -313,9 +313,17 @@ let g:watchdogs#default_config = {
 \	"markdown/watchdogs_checker" : {
 \		"type"
 \			: executable("redpen") ? "watchdogs_checker/redpen"
+\			: executable("textlint") ? "watchdogs_checker/textlint"
 \			: ""
 \	},
 \
+\	"watchdogs_checker/textlint" : {
+\		"command" : "textlint",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#'
+\	},
 \
 \	"perl/watchdogs_checker" : {
 \		"type"

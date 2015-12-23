@@ -270,6 +270,10 @@
 - "redpen"
   redpen を使用した自然言語で書かれた文書のチェックを行います。
 
+- "textlint"
+  textlint を使用した自然言語で書かれた文書のチェックを行います。
+  textlint/textlint - https://github.com/textlint/textlint
+
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
