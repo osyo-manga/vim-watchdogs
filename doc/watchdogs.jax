@@ -278,6 +278,9 @@
   textlint を使用した自然言語で書かれた文書のチェックを行います。
   textlint/textlint - https://github.com/textlint/textlint
 
+- "yaml-lint"
+  yaml-lint で yaml のシンタックスチェックを行ないます。
+  Pryz/yaml-lint - https://github.com/Pryz/yaml-lint
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
@@ -358,6 +361,8 @@
 - "markdown"
   デフォルト : "watchdogs_checker/redpen"
 
+- "yaml"
+  デフォルト : "watchdogs_checker/yaml-lint"
 
 ==============================================================================
 コンフィグ					*watchdogs-config*

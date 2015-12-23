@@ -85,6 +85,8 @@ Async syntax check plugin.
 * Vim script
  * vimlint
  * vimlint_by_dbakker
+* YAML
+ * yaml-lint
 * zsh
  * zsh
 

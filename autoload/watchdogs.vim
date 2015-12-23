@@ -515,6 +515,19 @@ let g:watchdogs#default_config = {
 \	},
 \
 \
+\	"yaml/watchdogs_checker" : {
+\		"type"
+\			: executable("yaml-lint") ? "watchdogs_checker/yaml-lint"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/yaml-lint" : {
+\		"command"     : "yaml-lint",
+\		'cmdopt'      : '-q',
+\		"errorformat" : "%.%#(%f): %m at line %l column %c%.%#"
+\	 },
+\
+\
 \	"watchdogs_checker_dummy" : {}
 \}
 
