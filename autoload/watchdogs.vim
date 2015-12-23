@@ -432,6 +432,7 @@ let g:watchdogs#default_config = {
 \	"sh/watchdogs_checker" : {
 \		"type"
 \			: executable("sh") ? "watchdogs_checker/sh"
+\			: executable("shellcheck") ? "watchdogs_checker/shellcheck"
 \			: ""
 \	},
 \
@@ -441,6 +442,10 @@ let g:watchdogs#default_config = {
 \		"errorformat"    : '%f:\ line\ %l:%m',
 \	 },
 \
+\	"watchdogs_checker/shellcheck" : {
+\		"command" : "shellcheck",
+\		'cmdopt'  : '-f gcc',
+\	 },
 \
 \	"zsh/watchdogs_checker" : {
 \		"type"

@@ -212,6 +212,10 @@
 - "sh"
   sh で sh のシンタックスチェックを行います。
 
+- "shellcheck"
+  shellcheck で sh のシンタックスチェックを行います。
+  koalaman/shellcheck - https://github.com/koalaman/shellcheck
+
 - "zsh"
   zsh で zsh のシンタックスチェックを行います。
 
