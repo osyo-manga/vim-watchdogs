@@ -82,6 +82,7 @@ Async syntax check plugin.
  * sh
  * shellcheck
  * bashate
+ * checkbashisms
 * TypeScript
  * tsc
  * tslint
