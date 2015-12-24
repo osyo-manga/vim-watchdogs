@@ -64,6 +64,7 @@ Async syntax check plugin.
 * PHP
  * php
  * phpcs
+ * phpmd
 * Python
  * pyflakes
  * flake8
