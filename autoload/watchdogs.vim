@@ -375,7 +375,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/phpmd" : {
 \		"command" : "phpmd",
 \		"exec"    : "%c %s:p text %o",
-\		"cmdopt"  : "codesize,design,unusedcode,naming",
+\		"cmdopt"  : "cleancode,codesize,design,naming,unusedcode",
 \		"errorformat" : '%f:%l%\s%m,%-G%.%#',
 \	},
 \
