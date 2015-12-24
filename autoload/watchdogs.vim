@@ -427,6 +427,7 @@ let g:watchdogs#default_config = {
 \	"scss/watchdogs_checker" : {
 \		"type"
 \			: executable("sass") ? "watchdogs_checker/scss"
+\			: executable("scss-lint") ? "watchdogs_checker/scss-lint"
 \			: ""
 \	},
 \
@@ -436,6 +437,12 @@ let g:watchdogs#default_config = {
 \		"errorformat"
 \			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
 \			.',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
+\	},
+\
+\	"watchdogs_checker/scss-lint" : {
+\		"command" : "scss-lint",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : '%f:%l\ %m',
 \	},
 \
 \
