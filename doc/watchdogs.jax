@@ -186,6 +186,10 @@
   PHP_CodeSniffer の --report=emacs オプションで php のシンタックスチェックを行います。
   squizlabs/PHP_CodeSniffer - https://github.com/squizlabs/PHP_CodeSniffer
 
+- "phpmd"
+  PHP Mess Detector の cleancode,codesize,design,naming,unusedcode オプションで php のシンタックスチェックを行います。
+  phpmd/phpmd - https://github.com/phpmd/phpmd
+
 - "luac"
   luac を使用した lua のシンタックスチェックを行います。
 
@@ -233,6 +237,10 @@
 - "scss"
   scss で --check オプションで scss のシンタックスチェックを行います。
 
+- "scss-lint"
+  scss-lint で scss のシンタックスチェックを行います。
+  brigade/scss-lint - https://github.com/brigade/scss-lint
+
 - "tsc"
   tsc で typescript のシンタックスチェックを行います。
 
@@ -277,6 +285,10 @@
 - "textlint"
   textlint を使用した自然言語で書かれた文書のチェックを行います。
   textlint/textlint - https://github.com/textlint/textlint
+
+- "mdl"
+  mdl を使用した markdown のシンタックスチェックを行います。
+  mivok/markdownlint - https://github.com/mivok/markdownlint
 
 - "yaml-lint"
   yaml-lint で yaml のシンタックスチェックを行ないます。

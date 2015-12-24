@@ -57,12 +57,14 @@ Async syntax check plugin.
 * Markdown
  * redpen
  * textlint
+ * mdl
 * Perl
  * perl
  * vimparse.pl
 * PHP
  * php
  * phpcs
+ * phpmd
 * Python
  * pyflakes
  * flake8
@@ -75,6 +77,7 @@ Async syntax check plugin.
  * scalac
 * scss
  * scss
+ * scss-lint
 * sh
  * sh
  * shellcheck
