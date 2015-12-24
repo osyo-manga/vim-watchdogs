@@ -186,6 +186,10 @@
   PHP_CodeSniffer の --report=emacs オプションで php のシンタックスチェックを行います。
   squizlabs/PHP_CodeSniffer - https://github.com/squizlabs/PHP_CodeSniffer
 
+- "phpmd"
+  PHP Mess Detector の cleancode,codesize,design,naming,unusedcode オプションで php のシンタックスチェックを行います。
+  phpmd/phpmd - https://github.com/phpmd/phpmd
+
 - "luac"
   luac を使用した lua のシンタックスチェックを行います。
 
