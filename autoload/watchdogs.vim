@@ -356,6 +356,7 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("php") ? "watchdogs_checker/php"
 \			: executable("phpcs") ? "watchdogs_checker/phpcs"
+\			: executable("phpmd") ? "watchdogs_checker/phpmd"
 \			: ""
 \	},
 \
@@ -369,6 +370,13 @@ let g:watchdogs#default_config = {
 \		"command" : "phpcs",
 \		"exec"    : "%c --report=emacs %o %s:p",
 \		"errorformat" : '%f:%l:%c:\ %m',
+\	},
+\
+\	"watchdogs_checker/phpmd" : {
+\		"command" : "phpmd",
+\		"exec"    : "%c %s:p text %o",
+\		"cmdopt"  : "codesize,design,unusedcode,naming",
+\		"errorformat" : '%f:%l%\s%m,%-G%.%#',
 \	},
 \
 \
