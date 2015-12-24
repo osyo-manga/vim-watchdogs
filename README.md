@@ -76,6 +76,7 @@ Async syntax check plugin.
  * scalac
 * scss
  * scss
+ * scss-lint
 * sh
  * sh
  * shellcheck

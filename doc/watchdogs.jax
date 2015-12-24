@@ -233,6 +233,10 @@
 - "scss"
   scss で --check オプションで scss のシンタックスチェックを行います。
 
+- "scss-lint"
+  scss-lint で scss のシンタックスチェックを行います。
+  brigade/scss-lint - https://github.com/brigade/scss-lint
+
 - "tsc"
   tsc で typescript のシンタックスチェックを行います。
 
