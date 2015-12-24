@@ -313,7 +313,23 @@ let g:watchdogs#default_config = {
 \	"markdown/watchdogs_checker" : {
 \		"type"
 \			: executable("redpen") ? "watchdogs_checker/redpen"
+\			: executable("textlint") ? "watchdogs_checker/textlint"
+\			: executable("mdl") ? "watchdogs_checker/mdl"
 \			: ""
+\	},
+\
+\	"watchdogs_checker/textlint" : {
+\		"command" : "textlint",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#'
+\	},
+\
+\	"watchdogs_checker/mdl" : {
+\		"command"     : "mdl",
+\		"errorformat" : "%E%f:%l: %m," .
+\										"%W%f: Kramdown Warning: %m found on line %l"
 \	},
 \
 \
@@ -339,6 +355,7 @@ let g:watchdogs#default_config = {
 \	"php/watchdogs_checker" : {
 \		"type"
 \			: executable("php") ? "watchdogs_checker/php"
+\			: executable("phpcs") ? "watchdogs_checker/phpcs"
 \			: ""
 \	},
 \
@@ -346,6 +363,12 @@ let g:watchdogs#default_config = {
 \		"command" : "php",
 \		"exec"    : "%c %o -l %s:p",
 \		"errorformat" : '%m\ in\ %f\ on\ line\ %l',
+\	},
+\
+\	"watchdogs_checker/phpcs" : {
+\		"command" : "phpcs",
+\		"exec"    : "%c --report=emacs %o %s:p",
+\		"errorformat" : '%f:%l:%c:\ %m',
 \	},
 \
 \
@@ -432,6 +455,8 @@ let g:watchdogs#default_config = {
 \	"sh/watchdogs_checker" : {
 \		"type"
 \			: executable("sh") ? "watchdogs_checker/sh"
+\			: executable("shellcheck") ? "watchdogs_checker/shellcheck"
+\			: executable("bashate") ? "watchdogs_checker/bashate"
 \			: ""
 \	},
 \
@@ -439,6 +464,16 @@ let g:watchdogs#default_config = {
 \		"command" : "sh",
 \		"exec"    : "%c -n %o %s:p",
 \		"errorformat"    : '%f:\ line\ %l:%m',
+\	 },
+\
+\	"watchdogs_checker/shellcheck" : {
+\		"command" : "shellcheck",
+\		'cmdopt'  : '-f gcc',
+\	 },
+\
+\	"watchdogs_checker/bashate" : {
+\		"command"     : "bashate",
+\		"errorformat" : "%E[E] %m,%W[W] %m,%Z - %f : L%l,%-G%.%#",
 \	 },
 \
 \

@@ -182,6 +182,10 @@
 - "php"
   php の -l オプションで php のシンタックスチェックを行います。
 
+- "phpcs"
+  PHP_CodeSniffer の --report=emacs オプションで php のシンタックスチェックを行います。
+  squizlabs/PHP_CodeSniffer - https://github.com/squizlabs/PHP_CodeSniffer
+
 - "luac"
   luac を使用した lua のシンタックスチェックを行います。
 
@@ -211,6 +215,14 @@
 
 - "sh"
   sh で sh のシンタックスチェックを行います。
+
+- "shellcheck"
+  shellcheck で sh のシンタックスチェックを行います。
+  koalaman/shellcheck - https://github.com/koalaman/shellcheck
+
+- "bashate"
+  bashate で sh のシンタックスチェックを行います。
+  openstack-dev/bashte - https://github.com/openstack-dev/bashate
 
 - "zsh"
   zsh で zsh のシンタックスチェックを行います。
@@ -261,6 +273,14 @@
 
 - "redpen"
   redpen を使用した自然言語で書かれた文書のチェックを行います。
+
+- "textlint"
+  textlint を使用した自然言語で書かれた文書のチェックを行います。
+  textlint/textlint - https://github.com/textlint/textlint
+
+- "mdl"
+  mdl を使用した markdown のシンタックスチェックを行います。
+  mivok/markdownlint - https://github.com/mivok/markdownlint
 
 
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
