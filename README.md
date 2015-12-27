@@ -58,6 +58,7 @@ Async syntax check plugin.
  * redpen
  * textlint
  * mdl
+ * eslint-md
 * Perl
  * perl
  * vimparse.pl

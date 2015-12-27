@@ -316,6 +316,7 @@ let g:watchdogs#default_config = {
 \			: executable("redpen") ? "watchdogs_checker/redpen"
 \			: executable("textlint") ? "watchdogs_checker/textlint"
 \			: executable("mdl") ? "watchdogs_checker/mdl"
+\			: executable("eslint-md") ? "watchdogs_checker/eslint-md"
 \			: ""
 \	},
 \
@@ -331,6 +332,14 @@ let g:watchdogs#default_config = {
 \		"command"     : "mdl",
 \		"errorformat" : "%E%f:%l: %m," .
 \										"%W%f: Kramdown Warning: %m found on line %l"
+\	},
+\
+\	"watchdogs_checker/eslint-md" : {
+\		"command" : "eslint-md",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#',
 \	},
 \
 \
