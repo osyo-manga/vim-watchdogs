@@ -270,7 +270,8 @@ let g:watchdogs#default_config = {
 \		"command" : "eslint",
 \		"exec"    : "%c -f compact %o %s:p",
 \		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
-\						'%W%f: line %l\, col %c\, Warning - %m',
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#',
 \	},
 \
 \	"json/watchdogs_checker" : {
@@ -356,6 +357,7 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("php") ? "watchdogs_checker/php"
 \			: executable("phpcs") ? "watchdogs_checker/phpcs"
+\			: executable("phpmd") ? "watchdogs_checker/phpmd"
 \			: ""
 \	},
 \
@@ -369,6 +371,13 @@ let g:watchdogs#default_config = {
 \		"command" : "phpcs",
 \		"exec"    : "%c --report=emacs %o %s:p",
 \		"errorformat" : '%f:%l:%c:\ %m',
+\	},
+\
+\	"watchdogs_checker/phpmd" : {
+\		"command" : "phpmd",
+\		"exec"    : "%c %s:p text %o",
+\		"cmdopt"  : "cleancode,codesize,design,naming,unusedcode",
+\		"errorformat" : '%f:%l%\s%m,%-G%.%#',
 \	},
 \
 \
@@ -427,6 +436,7 @@ let g:watchdogs#default_config = {
 \	"scss/watchdogs_checker" : {
 \		"type"
 \			: executable("sass") ? "watchdogs_checker/scss"
+\			: executable("scss-lint") ? "watchdogs_checker/scss-lint"
 \			: ""
 \	},
 \
@@ -436,6 +446,12 @@ let g:watchdogs#default_config = {
 \		"errorformat"
 \			: '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
 \			.',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m',
+\	},
+\
+\	"watchdogs_checker/scss-lint" : {
+\		"command" : "scss-lint",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : '%f:%l\ %m',
 \	},
 \
 \
