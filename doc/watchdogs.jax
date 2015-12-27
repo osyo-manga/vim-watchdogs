@@ -298,6 +298,10 @@
   eslint-md で markdown 内の JavaScript コードのシンタックスチェックを行います。
   wooorm/eslint-md - https://github.com/wooorm/eslint-md
 
+- "yaml-lint"
+  yaml-lint で yaml のシンタックスチェックを行ないます。
+  Pryz/yaml-lint - https://github.com/Pryz/yaml-lint
+
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
 |g:watchdogs#default_config| を参照して下さい。
@@ -377,6 +381,8 @@
 - "markdown"
   デフォルト : "watchdogs_checker/redpen"
 
+- "yaml"
+  デフォルト : "watchdogs_checker/yaml-lint"
 
 ==============================================================================
 コンフィグ					*watchdogs-config*
