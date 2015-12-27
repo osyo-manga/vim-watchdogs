@@ -263,7 +263,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f: line %l\,\ col %c\, %m',
+\		"errorformat" : '%f: line %l\,\ col %c\, %m,%-G%.%#',
 \	},
 \
 \	"watchdogs_checker/eslint" : {
@@ -387,13 +387,13 @@ let g:watchdogs#default_config = {
 \			: executable("flake8") ? "watchdogs_checker/flake8"
 \			: ""
 \	},
-\	
+\
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
 \		"errorformat" : '%f:%l:%m',
 \	},
-\	
+\
 \	"watchdogs_checker/flake8" : {
 \		"command" : "flake8",
 \		"exec"    : '%c %o %s:p',
