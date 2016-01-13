@@ -38,6 +38,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/_" : {
 \		"runner" : "vimproc",
 \		"outputter" : "quickfix",
+\		"outputter/quickfix/open_cmd" : "cwindow",
 \		"hook/hier_update/enable_exit" : 1,
 \		"hook/quickfix_status_enable/enable_exit" : 1,
 \		"hook/shebang/enable" : 0,
