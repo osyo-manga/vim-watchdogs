@@ -249,7 +249,12 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/javac" : {
 \		"command" : "javac",
-\		"exec"    : "%c -d $TEMP %o %S:p",
+\		"exec"    : "%c -d " . (
+\						  exists('$TEMP') ? $TEMP
+\						: exists('$TMP') ? $TMP
+\						: exists('$TMPDIR') ? $TMPDIR
+\						: "") .
+\					" %o %S:p",
 \		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
 \	},
 \
