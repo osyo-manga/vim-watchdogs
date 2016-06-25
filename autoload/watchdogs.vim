@@ -482,7 +482,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/scss-lint" : {
 \		"command" : "scss-lint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f:%l\ %m',
+\		"errorformat" : '%f:%l\ %m, %-G%.%#',
 \	},
 \
 \
