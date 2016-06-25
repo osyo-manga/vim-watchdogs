@@ -38,6 +38,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/_" : {
 \		"runner" : "vimproc",
 \		"outputter" : "quickfix",
+\		"outputter/quickfix/open_cmd" : "cwindow",
 \		"hook/hier_update/enable_exit" : 1,
 \		"hook/quickfix_status_enable/enable_exit" : 1,
 \		"hook/shebang/enable" : 0,
@@ -248,7 +249,12 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/javac" : {
 \		"command" : "javac",
-\		"exec"    : "%c -d $TEMP %o %S:p",
+\		"exec"    : "%c -d " . (
+\						  exists('$TEMP') ? $TEMP
+\						: exists('$TMP') ? $TMP
+\						: exists('$TMPDIR') ? $TMPDIR
+\						: "") .
+\					" %o %S:p",
 \		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
 \	},
 \
@@ -263,7 +269,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f: line %l\,\ col %c\, %m',
+\		"errorformat" : '%f: line %l\,\ col %c\, %m,%-G%.%#',
 \	},
 \
 \	"watchdogs_checker/eslint" : {
@@ -316,6 +322,7 @@ let g:watchdogs#default_config = {
 \			: executable("redpen") ? "watchdogs_checker/redpen"
 \			: executable("textlint") ? "watchdogs_checker/textlint"
 \			: executable("mdl") ? "watchdogs_checker/mdl"
+\			: executable("eslint-md") ? "watchdogs_checker/eslint-md"
 \			: ""
 \	},
 \
@@ -331,6 +338,14 @@ let g:watchdogs#default_config = {
 \		"command"     : "mdl",
 \		"errorformat" : "%E%f:%l: %m," .
 \										"%W%f: Kramdown Warning: %m found on line %l"
+\	},
+\
+\	"watchdogs_checker/eslint-md" : {
+\		"command" : "eslint-md",
+\		"exec"    : "%c -f compact %o %s:p",
+\		"errorformat" : '%E%f: line %l\, col %c\, Error - %m,' .
+\						'%W%f: line %l\, col %c\, Warning - %m,' .
+\						'%-G%.%#',
 \	},
 \
 \
@@ -383,17 +398,17 @@ let g:watchdogs#default_config = {
 \
 \	"python/watchdogs_checker" : {
 \		"type"
-\			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
 \			: executable("flake8") ? "watchdogs_checker/flake8"
+\			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
 \			: ""
 \	},
-\	
+\
 \	"watchdogs_checker/pyflakes" : {
 \		"command" : "pyflakes",
 \		"exec"    : '%c %o %s:p',
 \		"errorformat" : '%f:%l:%m',
 \	},
-\	
+\
 \	"watchdogs_checker/flake8" : {
 \		"command" : "flake8",
 \		"exec"    : '%c %o %s:p',
@@ -417,6 +432,22 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%f:%l:%c:%m',
 \	},
 \
+\	"rust/watchdogs_checker" : {
+\		"type"
+\			: executable("rustc") ? "watchdogs_checker/rustc"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/rustc" : {
+\		"command" : "rustc",
+\		"exec"    : '%c %o %s:p',
+\		"cmdopt" : "-Z parse-only",
+\		"errorformat"
+\			: '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
+\			. ',%W%f:%l:%c: %\d%#:%\d%# %.%\{-}warning:%.%\{-} %m'
+\			. ',%C%f:%l %m'
+\			. ',%-Z%.%#',
+\	},
 \
 \	"sass/watchdogs_checker" : {
 \		"type"
@@ -473,6 +504,7 @@ let g:watchdogs#default_config = {
 \			: executable("sh") ? "watchdogs_checker/sh"
 \			: executable("shellcheck") ? "watchdogs_checker/shellcheck"
 \			: executable("bashate") ? "watchdogs_checker/bashate"
+\			: executable("checkbashisms") ? "watchdogs_checker/checkbashisms"
 \			: ""
 \	},
 \
@@ -491,6 +523,17 @@ let g:watchdogs#default_config = {
 \		"command"     : "bashate",
 \		"errorformat" : "%E[E] %m,%W[W] %m,%Z - %f : L%l,%-G%.%#",
 \	 },
+\
+\	"watchdogs_checker/checkbashisms" : {
+\		"command"     : "checkbashisms",
+\		"errorformat" : "%-Gscript %f is already a bash script; skipping," .
+\										"%Eerror: %f: %m\, opened in line %l," .
+\										"%Eerror: %f: %m," .
+\										"%Ecannot open script %f for reading: %m," .
+\										"%Wscript %f %m,%C%.# lines," .
+\										"%Wpossible bashism in %f line %l (%m):,%C%.%#,%Z.%#," .
+\										"%-G%.%#"
+\	},
 \
 \
 \	"zsh/watchdogs_checker" : {
@@ -537,6 +580,19 @@ let g:watchdogs#default_config = {
 \		"command" : "redpen",
 \		"exec"    : "%c %o %s:p",
 \	},
+\
+\
+\	"yaml/watchdogs_checker" : {
+\		"type"
+\			: executable("yaml-lint") ? "watchdogs_checker/yaml-lint"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/yaml-lint" : {
+\		"command"     : "yaml-lint",
+\		'cmdopt'      : '-q',
+\		"errorformat" : "%.%#(%f): %m at line %l column %c%.%#"
+\	 },
 \
 \
 \	"watchdogs_checker_dummy" : {}

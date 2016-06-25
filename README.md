@@ -58,6 +58,7 @@ Async syntax check plugin.
  * redpen
  * textlint
  * mdl
+ * eslint-md
 * Perl
  * perl
  * vimparse.pl
@@ -82,12 +83,15 @@ Async syntax check plugin.
  * sh
  * shellcheck
  * bashate
+ * checkbashisms
 * TypeScript
  * tsc
  * tslint
 * Vim script
  * vimlint
  * vimlint_by_dbakker
+* YAML
+ * yaml-lint
 * zsh
  * zsh
 
