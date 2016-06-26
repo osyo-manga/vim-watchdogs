@@ -269,7 +269,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f: line %l\,\ col %c\, %m,%-G%.%#',
+\		"errorformat" : '%f: line %l\,\ col %c\, %m, %-G%.%#',
 \	},
 \
 \	"watchdogs_checker/eslint" : {
@@ -482,7 +482,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/scss-lint" : {
 \		"command" : "scss-lint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f:%l\ %m',
+\		"errorformat" : '%f:%l\ %m, %-G%.%#',
 \	},
 \
 \
