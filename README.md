@@ -35,6 +35,7 @@ Async syntax check plugin.
 * go
  * gofmt
  * govet
+ * golint
  * go vet
 * Haml
  * haml

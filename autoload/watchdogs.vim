@@ -171,9 +171,10 @@ let g:watchdogs#default_config = {
 \
 \	"go/watchdogs_checker" : {
 \		"type"
-\			: executable("gofmt") ? "watchdogs_checker/gofmt"
-\			: executable("govet") ? "watchdogs_checker/govet"
-\			: executable("go")    ? "watchdogs_checker/go_vet"
+\			: executable("gofmt")  ? "watchdogs_checker/gofmt"
+\			: executable("govet")  ? "watchdogs_checker/govet"
+\			: executable("golint") ? "watchdogs_checker/golint"
+\			: executable("go")     ? "watchdogs_checker/go_vet"
 \			: ""
 \	},
 \
@@ -187,6 +188,12 @@ let g:watchdogs#default_config = {
 \		"command" : "govet",
 \		"exec"    : "%c %o %s:p",
 \		"errorformat" : 'govet: %.%\+: %f:%l:%c: %m,%W%f:%l: %m,%-G%.%#',
+\	},
+\
+\	"watchdogs_checker/golint" : {
+\		"command" : "golint",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : '%f:%l:%c: %m',
 \	},
 \
 \	"watchdogs_checker/go_vet" : {
