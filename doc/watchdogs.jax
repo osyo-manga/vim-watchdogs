@@ -202,6 +202,10 @@
 - "govet"
   govet で GO言語のシンタックスチェックを行います。
 
+- "golint"
+  golint で GO言語のシンタックスチェックを行います。
+  golang/lint - https://github.com/golang/lint
+
 - "go_vet"
   go の vet オプションで GO言語のシンタックスチェックを行います。
 
