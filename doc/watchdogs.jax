@@ -249,6 +249,10 @@
   scss-lint で scss のシンタックスチェックを行います。
   brigade/scss-lint - https://github.com/brigade/scss-lint
 
+- "stylelint"
+  stylelint で css または scss のシンタックスチェックを行います。
+  stylelint/stylelint - https://github.com/stylelint/stylelint
+
 - "tsc"
   tsc で typescript のシンタックスチェックを行います。
 

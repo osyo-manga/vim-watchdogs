@@ -30,6 +30,7 @@ Async syntax check plugin.
  * coffeelint
 * css
  * csslint
+ * stylelint
 * D
  * dmd
 * go
@@ -80,6 +81,7 @@ Async syntax check plugin.
 * scss
  * scss
  * scss-lint
+ * stylelint
 * sh
  * sh
  * shellcheck
