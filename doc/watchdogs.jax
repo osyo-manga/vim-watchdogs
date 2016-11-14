@@ -269,6 +269,10 @@
   csslint で CSS のシンタックスチェックを行います。
   CSSLint/csslint - https://github.com/CSSLint/csslint
 
+- "vint"
+  vint で Vim script のシンタックスチェックを行います。
+  Kuniwak/vint - https://github.com/Kuniwak/vint
+
 - "vimlint"
   vim-vimlint で Vim script のシンタックスチェックを行います。
   syngan/vim-vimlint - https://github.com/syngan/vim-vimlint
@@ -375,7 +379,7 @@
   デフォルト : "watchdogs_checker/coffee"
 
 - "vim"
-  デフォルト : "watchdogs_checker/vimlint"
+  デフォルト : "watchdogs_checker/vint"
 
 - "haml"
   デフォルト : "watchdogs_checker/haml"

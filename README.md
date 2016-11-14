@@ -91,6 +91,7 @@ Async syntax check plugin.
  * tsc
  * tslint
 * Vim script
+ * vint
  * vimlint
  * vimlint_by_dbakker
 * YAML
