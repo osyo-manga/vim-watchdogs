@@ -63,7 +63,7 @@ command! -nargs=0
 
 
 let g:watchdogs_quickrun_running_check =
-\	get(g:, "g:watchdogs_quickrun_running_check", 0)
+\	get(g:, "watchdogs_quickrun_running_check", 0)
 
 
 let g:watchdogs_check_BufWritePost_enable =
@@ -73,7 +73,7 @@ let g:watchdogs_check_BufWritePost_enables =
 \	get(g:, "watchdogs_check_BufWritePost_enables", {})
 
 let g:watchdogs_check_BufWritePost_enable_on_wq =
-\	get(g:, "g:watchdogs_check_BufWritePost_disable_on_wq", 1)
+\	get(g:, "watchdogs_check_BufWritePost_enable_on_wq", 1)
 
 
 let s:called_quit_pre = 0

@@ -202,6 +202,10 @@
 - "govet"
   govet で GO言語のシンタックスチェックを行います。
 
+- "golint"
+  golint で GO言語のシンタックスチェックを行います。
+  golang/lint - https://github.com/golang/lint
+
 - "go_vet"
   go の vet オプションで GO言語のシンタックスチェックを行います。
 
@@ -245,6 +249,10 @@
   scss-lint で scss のシンタックスチェックを行います。
   brigade/scss-lint - https://github.com/brigade/scss-lint
 
+- "stylelint"
+  stylelint で css または scss のシンタックスチェックを行います。
+  stylelint/stylelint - https://github.com/stylelint/stylelint
+
 - "tsc"
   tsc で typescript のシンタックスチェックを行います。
 
@@ -260,6 +268,10 @@
 - "csslint"
   csslint で CSS のシンタックスチェックを行います。
   CSSLint/csslint - https://github.com/CSSLint/csslint
+
+- "vint"
+  vint で Vim script のシンタックスチェックを行います。
+  Kuniwak/vint - https://github.com/Kuniwak/vint
 
 - "vimlint"
   vim-vimlint で Vim script のシンタックスチェックを行います。
@@ -367,7 +379,7 @@
   デフォルト : "watchdogs_checker/coffee"
 
 - "vim"
-  デフォルト : "watchdogs_checker/vimlint"
+  デフォルト : "watchdogs_checker/vint"
 
 - "haml"
   デフォルト : "watchdogs_checker/haml"

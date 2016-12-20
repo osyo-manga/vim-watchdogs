@@ -30,11 +30,13 @@ Async syntax check plugin.
  * coffeelint
 * css
  * csslint
+ * stylelint
 * D
  * dmd
 * go
  * gofmt
  * govet
+ * golint
  * go vet
 * Haml
  * haml
@@ -79,6 +81,7 @@ Async syntax check plugin.
 * scss
  * scss
  * scss-lint
+ * stylelint
 * sh
  * sh
  * shellcheck
@@ -88,6 +91,7 @@ Async syntax check plugin.
  * tsc
  * tslint
 * Vim script
+ * vint
  * vimlint
  * vimlint_by_dbakker
 * YAML
