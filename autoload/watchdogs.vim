@@ -148,6 +148,7 @@ let g:watchdogs#default_config = {
 \	"css/watchdogs_checker" : {
 \		"type"
 \			: executable("csslint") ? "watchdogs_checker/csslint"
+\			: executable("stylelint") ? "watchdogs_checker/stylelint"
 \			: ""
 \	},
 \
@@ -155,6 +156,12 @@ let g:watchdogs#default_config = {
 \		"command" : "csslint",
 \		"exec"    : "%c --format=compact %o %s:p",
 \		"errorformat" : '%f:\ line\ %l\\,\ col\ %c\\,\ %m',
+\	},
+\
+\	"watchdogs_checker/stylelint" : {
+\		"command" : "stylelint",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : '%+P%f,%*\s%l:%c%*\s%m,%-Q',
 \	},
 \
 \	"d/watchdogs_checker" : {
@@ -171,9 +178,10 @@ let g:watchdogs#default_config = {
 \
 \	"go/watchdogs_checker" : {
 \		"type"
-\			: executable("gofmt") ? "watchdogs_checker/gofmt"
-\			: executable("govet") ? "watchdogs_checker/govet"
-\			: executable("go")    ? "watchdogs_checker/go_vet"
+\			: executable("gofmt")  ? "watchdogs_checker/gofmt"
+\			: executable("govet")  ? "watchdogs_checker/govet"
+\			: executable("golint") ? "watchdogs_checker/golint"
+\			: executable("go")     ? "watchdogs_checker/go_vet"
 \			: ""
 \	},
 \
@@ -187,6 +195,12 @@ let g:watchdogs#default_config = {
 \		"command" : "govet",
 \		"exec"    : "%c %o %s:p",
 \		"errorformat" : 'govet: %.%\+: %f:%l:%c: %m,%W%f:%l: %m,%-G%.%#',
+\	},
+\
+\	"watchdogs_checker/golint" : {
+\		"command" : "golint",
+\		"exec"    : "%c %o %s:p",
+\		"errorformat" : '%f:%l:%c: %m',
 \	},
 \
 \	"watchdogs_checker/go_vet" : {
@@ -249,7 +263,12 @@ let g:watchdogs#default_config = {
 \
 \	"watchdogs_checker/javac" : {
 \		"command" : "javac",
-\		"exec"    : "%c -d $TEMP %o %S:p",
+\		"exec"    : "%c -d " . (
+\						  exists('$TEMP') ? $TEMP
+\						: exists('$TMP') ? $TMP
+\						: exists('$TMPDIR') ? $TMPDIR
+\						: "") .
+\					" %o %S:p",
 \		"errorformat" : '%tarning: %m,%-G%*\d error,%-G%*\d warnings,%f:%l: %trror: %m,%f:%l: %tarning: %m,%+G%.%#',
 \	},
 \
@@ -264,7 +283,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/jshint" : {
 \		"command" : "jshint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f: line %l\,\ col %c\, %m,%-G%.%#',
+\		"errorformat" : '%f: line %l\,\ col %c\, %m, %-G%.%#',
 \	},
 \
 \	"watchdogs_checker/eslint" : {
@@ -393,8 +412,8 @@ let g:watchdogs#default_config = {
 \
 \	"python/watchdogs_checker" : {
 \		"type"
-\			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
 \			: executable("flake8") ? "watchdogs_checker/flake8"
+\			: executable("pyflakes") ? "watchdogs_checker/pyflakes"
 \			: ""
 \	},
 \
@@ -427,6 +446,24 @@ let g:watchdogs#default_config = {
 \		"errorformat" : '%f:%l:%c:%m',
 \	},
 \
+\	"rust/watchdogs_checker" : {
+\		"type"
+\			: executable("rustc") ? "watchdogs_checker/rustc"
+\			: ""
+\	},
+\
+\	"watchdogs_checker/rustc" : {
+\		"command" : "rustc",
+\		"exec"    : '%c %o %s:p',
+\		"cmdopt" : "-Z no-trans",
+\		"errorformat"
+\			: '%-Gerror: aborting %.%#,'
+\			. '%-Gerror: Could not compile %.%#,'
+\			. '%Eerror: %m,'
+\			. '%Eerror[E%n]: %m,'
+\			. '%Wwarning: ,'
+\			. '%C %#--> %f:%l:%c'
+\	},
 \
 \	"sass/watchdogs_checker" : {
 \		"type"
@@ -447,6 +484,12 @@ let g:watchdogs#default_config = {
 \		"type"
 \			: executable("sass") ? "watchdogs_checker/scss"
 \			: executable("scss-lint") ? "watchdogs_checker/scss-lint"
+\			: executable("stylelint") ? "watchdogs_checker/stylelint"
+\			: "",
+\		"cmdopt"
+\			: executable("sass") ? ""
+\			: executable("scss-lint") ? ""
+\			: executable("stylelint") ? "--syntax scss"
 \			: ""
 \	},
 \
@@ -461,7 +504,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/scss-lint" : {
 \		"command" : "scss-lint",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f:%l\ %m',
+\		"errorformat" : '%f:%l\ %m, %-G%.%#',
 \	},
 \
 \
