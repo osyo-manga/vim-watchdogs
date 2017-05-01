@@ -455,12 +455,14 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rustc" : {
 \		"command" : "rustc",
 \		"exec"    : '%c %o %s:p',
-\		"cmdopt" : "-Z parse-only",
+\		"cmdopt" : "-Z no-trans",
 \		"errorformat"
-\			: '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
-\			. ',%W%f:%l:%c: %\d%#:%\d%# %.%\{-}warning:%.%\{-} %m'
-\			. ',%C%f:%l %m'
-\			. ',%-Z%.%#',
+\			: '%-Gerror: aborting %.%#,'
+\			. '%-Gerror: Could not compile %.%#,'
+\			. '%Eerror: %m,'
+\			. '%Eerror[E%n]: %m,'
+\			. '%Wwarning: ,'
+\			. '%C %#--> %f:%l:%c'
 \	},
 \
 \	"sass/watchdogs_checker" : {
