@@ -465,6 +465,18 @@ let g:watchdogs#default_config = {
 \			. '%C %#--> %f:%l:%c'
 \	},
 \
+\	"watchdogs_checker/rustc_parse-only" : {
+\		"command" : "rustc",
+\		"exec"    : '%c %o %s:p',
+\		"cmdopt" : "-Z parse-only",
+\		"errorformat"
+\			: '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
+\			. ',%W%f:%l:%c: %\d%#:%\d%# %.%\{-}warning:%.%\{-} %m'
+\			. ',%C%f:%l %m'
+\			. ',%-Z%.%#',
+\	},
+\
+\
 \	"sass/watchdogs_checker" : {
 \		"type"
 \			: executable("sass") ? "watchdogs_checker/sass"

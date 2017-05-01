@@ -74,6 +74,9 @@ Async syntax check plugin.
 * Ruby
  * ruby
  * rubocop
+* Rust
+ * rustc
+ * rustc_parse-only(use `$ rustc parse-only`)
 * sass
  * sass
 * Scala
