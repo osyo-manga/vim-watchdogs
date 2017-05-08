@@ -1,104 +1,104 @@
-#watchdogs.vim
+# watchdogs.vim
 
 Async syntax check plugin.
 
 
-##Requirement
+## Requirement
 
 * [vim-quickrun](https://github.com/thinca/vim-quickrun)
 * [vimproc](https://github.com/Shougo/vimproc)
 * [shabadou.vim](https://github.com/osyo-manga/shabadou.vim)
 
 * more
- * [vim-hier](https://github.com/jceb/vim-hier)
- * [quickfixstatus](https://github.com/dannyob/quickfixstatus)
+     * [vim-hier](https://github.com/jceb/vim-hier)
+     * [quickfixstatus](https://github.com/dannyob/quickfixstatus)
 
 
 ##Supported
 * C
- * gcc
- * clang
+    * gcc
+    * clang
 * C++
- * g++
- * g++03
- * clang++
- * clang++03
- * clang-check
- * msvc
+    * g++
+    * g++03
+    * clang++
+    * clang++03
+    * clang-check
+    * msvc
 * coffee
- * coffee
- * coffeelint
+    * coffee
+    * coffeelint
 * css
- * csslint
- * stylelint
+    * csslint
+    * stylelint
 * D
- * dmd
+    * dmd
 * go
- * gofmt
- * govet
- * golint
- * go vet
+    * gofmt
+    * govet
+    * golint
+    * go vet
 * Haml
- * haml
- * haml-lint
+    * haml
+    * haml-lint
 * Haskell
- * ghc-mod
- * hlint
- * hdevtools
+    * ghc-mod
+    * hlint
+    * hdevtools
 * Java
- * javac
+    * javac
 * JavaScript
- * jshint
- * eslint
+    * jshint
+    * eslint
 * JSON
- * jsonlint
+    * jsonlint
 * Lua
- * luac
+    * luac
 * Nim
- * nim
+    * nim
 * Markdown
- * redpen
- * textlint
- * mdl
- * eslint-md
+    * redpen
+    * textlint
+    * mdl
+    * eslint-md
 * Perl
- * perl
- * vimparse.pl
+    * perl
+    * vimparse.pl
 * PHP
- * php
- * phpcs
- * phpmd
+    * php
+    * phpcs
+    * phpmd
 * Python
- * pyflakes
- * flake8
+    * pyflakes
+    * flake8
 * Ruby
- * ruby
- * rubocop
+    * ruby
+    * rubocop
 * Rust
- * rustc
- * rustc_parse-only(use `$ rustc parse-only`)
+    * rustc
+    * rustc_parse-only(use `$ rustc parse-only`)
 * sass
- * sass
+    * sass
 * Scala
- * scalac
+    * scalac
 * scss
- * scss
- * scss-lint
- * stylelint
+    * scss
+    * scss-lint
+    * stylelint
 * sh
- * sh
- * shellcheck
- * bashate
- * checkbashisms
+    * sh
+    * shellcheck
+    * bashate
+    * checkbashisms
 * TypeScript
- * tsc
- * tslint
+    * tsc
+    * tslint
 * Vim script
- * vint
- * vimlint
- * vimlint_by_dbakker
+    * vint
+    * vimlint
+    * vimlint_by_dbakker
 * YAML
- * yaml-lint
+    * yaml-lint
 * zsh
- * zsh
+    * zsh
 
