@@ -14,7 +14,7 @@ Async syntax check plugin.
      * [quickfixstatus](https://github.com/dannyob/quickfixstatus)
 
 
-##Supported
+## Supported
 * C
     * gcc
     * clang
