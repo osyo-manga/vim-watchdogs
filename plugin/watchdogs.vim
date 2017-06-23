@@ -117,7 +117,7 @@ function! s:watchdogs_check_cursorhold(filetype)
 			return
 		endif
 	endif
-	if get(b:, "watchdogs_checked_cursorhold", 1)
+	if get(b:, "watchdogs_checked_cursorhold", 0)
 		return
 	endif
 
@@ -137,6 +137,7 @@ augroup watchdogs-plugin
 	autocmd BufWritePost * call <SID>watchdogs_check_bufwrite(&filetype)
 
 	autocmd BufWritePost * let b:watchdogs_checked_cursorhold = 0
+	autocmd TextChanged * let b:watchdogs_checked_cursorhold = 0
 	autocmd CursorHold   * call <SID>watchdogs_check_cursorhold(&filetype)
 augroup END
 
