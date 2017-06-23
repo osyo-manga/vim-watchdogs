@@ -138,6 +138,7 @@ augroup watchdogs-plugin
 
 	autocmd BufWritePost * let b:watchdogs_checked_cursorhold = 0
 	autocmd TextChanged * let b:watchdogs_checked_cursorhold = 0
+	autocmd TextChangedI * let b:watchdogs_checked_cursorhold = 0
 	autocmd CursorHold   * call <SID>watchdogs_check_cursorhold(&filetype)
 augroup END
 
