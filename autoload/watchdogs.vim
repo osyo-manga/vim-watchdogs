@@ -443,7 +443,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rubocop" : {
 \		"command" : "rubocop",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f:%l:%c:%m,%f:%l:%m',
+\		"errorformat" : '%f:%l:%c:%m,%f:%l:%m,%-G%.%#',
 \	},
 \
 \	"rust/watchdogs_checker" : {
