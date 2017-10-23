@@ -314,6 +314,14 @@
   yaml-lint で yaml のシンタックスチェックを行ないます。
   Pryz/yaml-lint - https://github.com/Pryz/yaml-lint
 
+- "rustc"
+  rustc を使用した Rus のシンタックスチェックを行います。
+
+- "rustc_parse-only"
+  rustc を使用した Rus のシンタックスチェックを行います。
+  "rustc" との違いは `no-trans` オプションを使用します。
+
+
 各ツールを使用する為に予め Vim から使えるようにしておく必要があります。
 各ツールの細かい設定は autoload/watchdogs.vim に定義されている
 |g:watchdogs#default_config| を参照して下さい。
@@ -395,6 +403,9 @@
 
 - "yaml"
   デフォルト : "watchdogs_checker/yaml-lint"
+
+- "rust"
+  デフォルト : "watchdogs_checker/rustc"
 
 ==============================================================================
 コンフィグ					*watchdogs-config*
@@ -738,7 +749,7 @@ Example: >
 <
 
 NOTE: この設定を使用した場合、ウィンドウ分割を利用していると意図しないウィン
-\ドウへ移動する可能性があります。
+ドウへ移動する可能性があります。
 その場合は |watchdogs-examples-unopen_quickfix| を使用してください。
 
 

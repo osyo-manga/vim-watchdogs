@@ -443,7 +443,7 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rubocop" : {
 \		"command" : "rubocop",
 \		"exec"    : "%c %o %s:p",
-\		"errorformat" : '%f:%l:%c:%m, %-G%.%#',
+\		"errorformat" : '%f:%l:%c:%m,%f:%l:%m,%-G%.%#',
 \	},
 \
 \	"rust/watchdogs_checker" : {
@@ -455,6 +455,19 @@ let g:watchdogs#default_config = {
 \	"watchdogs_checker/rustc" : {
 \		"command" : "rustc",
 \		"exec"    : '%c %o %s:p',
+\		"cmdopt" : "-Z no-trans",
+\		"errorformat"
+\			: '%-Gerror: aborting %.%#,'
+\			. '%-Gerror: Could not compile %.%#,'
+\			. '%Eerror: %m,'
+\			. '%Eerror[E%n]: %m,'
+\			. '%Wwarning: ,'
+\			. '%C %#--> %f:%l:%c'
+\	},
+\
+\	"watchdogs_checker/rustc_parse-only" : {
+\		"command" : "rustc",
+\		"exec"    : '%c %o %s:p',
 \		"cmdopt" : "-Z parse-only",
 \		"errorformat"
 \			: '%E%f:%l:%c: %\d%#:%\d%# %.%\{-}error:%.%\{-} %m'
@@ -462,6 +475,7 @@ let g:watchdogs#default_config = {
 \			. ',%C%f:%l %m'
 \			. ',%-Z%.%#',
 \	},
+\
 \
 \	"sass/watchdogs_checker" : {
 \		"type"
