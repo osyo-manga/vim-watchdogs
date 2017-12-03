@@ -315,10 +315,10 @@
   Pryz/yaml-lint - https://github.com/Pryz/yaml-lint
 
 - "rustc"
-  rustc を使用した Rus のシンタックスチェックを行います。
+  rustc を使用した Rust のシンタックスチェックを行います。
 
 - "rustc_parse-only"
-  rustc を使用した Rus のシンタックスチェックを行います。
+  rustc を使用した Rust のシンタックスチェックを行います。
   "rustc" との違いは `no-trans` オプションを使用します。
 
 
