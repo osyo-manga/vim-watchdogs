@@ -433,7 +433,7 @@ Example >
 	\}
 
 	" filetype=cpp で使用するツールを g++ にし、オプションも追加する
-	let g:quickrun_config["javascript/watchdogs_checker"] = {
+	let g:quickrun_config["cpp/watchdogs_checker"] = {
 	\	"type" : "watchdogs_checker/g++",
 	\	"cmdopt" : "-Wall",
 	\}
